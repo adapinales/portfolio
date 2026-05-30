@@ -6,24 +6,57 @@
 <title>Ada Pinales — Case Study: The Girl Mompreneur</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream: #FFFFFF;
-    --warm-white: #FAFAFA;
-    --ink: #1C1917;
-    --ink-light: #44403C;
-    --gold: #B8860B;
-    --gold-light: #D4A017;
-    --terracotta: #C4623A;
-    --sage: #6B7C6E;
-    --border: #E8E0D4;
-    --section-gap: 64px;
+      :root {
+    /* Core palette */
+    --navy:           #0F1A2E;
+    --navy-mid:       #162440;
+    --navy-light:     #1E3358;
+    --slate:          #4A6FA5;
+    --slate-light:    #6B8FC2;
+    --ivory:          #F8F7F4;
+    --white:          #FAFAFA;
+
+    /* Text — LIGHT (use on dark/navy backgrounds) */
+    --text-light:          #FAFAFA;
+    --text-light-secondary: rgba(250,250,250,0.65);
+    --text-light-muted:     rgba(250,250,250,0.35);
+
+    /* Text — DARK (use on ivory/white backgrounds) */
+    --text-dark:           #0F1A2E;
+    --text-dark-secondary: #2C3E5C;
+    --text-dark-muted:     #4A6FA5;
+
+    /* Borders */
+    --border:         rgba(74,111,165,0.2);
+    --border-mid:     rgba(74,111,165,0.35);
+    --border-dark:    rgba(15,26,46,0.15);
+
+    --section-gap: 72px;
+
+    /* Legacy aliases — dark text versions for light backgrounds */
+    --cream:          #F8F7F4;
+    --warm-white:     #F8F7F4;
+    --ink:            #0F1A2E;
+    --ink-light:      #2C3E5C;
+    --ink-mid:        #162440;
+
+    /* Legacy aliases — light versions for dark backgrounds */
+    --gold:           #6B8FC2;
+    --gold-light:     #8BADD4;
+    --terracotta:     #4A6FA5;
+    --sage:           #6B8FC2;
+
+    /* Body text — default dark for light page body */
+    --text-primary:   #0F1A2E;
+    --text-secondary: #2C3E5C;
+    --text-muted:     #4A6FA5;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: var(--cream);
-    color: var(--ink);
+    background: #FFFFFF;
+    color: #0F1A2E;
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     line-height: 1.7;
@@ -33,7 +66,7 @@
   /* COVER */
   .cover {
     min-height: 100vh;
-    background: var(--ink);
+    background: var(--navy);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -86,17 +119,17 @@
   .cover-label {
     font-size: 10px; font-weight: 500;
     letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--gold-light); margin-bottom: 24px;
+    color: var(--slate-light); margin-bottom: 24px;
   }
 
   .cover-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(44px, 6vw, 76px);
     font-weight: 300; line-height: 1.08;
-    color: #FDFAF6; margin-bottom: 24px;
+    color: #FAFAFA; margin-bottom: 24px;
   }
 
-  .cover-title em { font-style: italic; color: var(--gold-light); }
+  .cover-title em { font-style: italic; color: var(--slate-light); }
 
   .cover-description {
     font-size: 15px; line-height: 1.75;
@@ -104,7 +137,7 @@
     max-width: 520px; margin-bottom: 48px;
   }
 
-  .cover-line { width: 48px; height: 1px; background: var(--gold); margin-bottom: 48px; }
+  .cover-line { width: 48px; height: 1px; background: var(--slate); margin-bottom: 48px; }
 
   .cover-stats {
     display: flex; gap: 48px; flex-wrap: wrap;
@@ -116,7 +149,7 @@
   .cover-stat-value {
     font-family: 'Cormorant Garamond', serif;
     font-size: 28px; font-weight: 300;
-    color: #FDFAF6; line-height: 1;
+    color: #FAFAFA; line-height: 1;
   }
 
   .cover-stat-label {
@@ -136,7 +169,7 @@
 
   .section-label {
     font-size: 10px; letter-spacing: 0.3em;
-    text-transform: uppercase; color: var(--terracotta);
+    text-transform: uppercase; color: var(--slate);
     font-weight: 500; margin-bottom: 16px;
     display: flex; align-items: center; gap: 12px;
   }
@@ -146,25 +179,25 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(26px, 3.5vw, 36px);
     font-weight: 400; line-height: 1.2;
-    color: var(--ink); margin-bottom: 20px;
+    color: var(--text-primary); margin-bottom: 20px;
   }
-  .section-title em { font-style: italic; color: var(--gold); }
+  .section-title em { font-style: italic; color: var(--slate); }
 
   .section-body {
     font-size: 15px; line-height: 1.85;
-    color: var(--ink-light); max-width: 660px;
+    color: #0F1A2E; max-width: 660px;
   }
 
   /* PROBLEM BLOCK */
   .problem-block {
-    background: var(--warm-white);
-    border-left: 3px solid var(--terracotta);
+    background: var(--ivory);
+    border-left: 3px solid var(--slate);
     padding: 32px 36px; margin-top: 28px;
   }
 
   .problem-label {
     font-size: 10px; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--terracotta);
+    text-transform: uppercase; color: var(--slate);
     font-weight: 500; margin-bottom: 12px;
   }
 
@@ -174,13 +207,13 @@
   }
 
   .problem-list li {
-    font-size: 14.5px; color: var(--ink-light);
+    font-size: 14.5px; color: var(--text-secondary);
     padding-left: 20px; position: relative; line-height: 1.6;
   }
 
   .problem-list li::before {
     content: '×'; position: absolute; left: 0;
-    color: var(--terracotta); font-weight: 500;
+    color: var(--slate); font-weight: 500;
   }
 
   /* APPROACH BLOCK */
@@ -190,7 +223,7 @@
   }
 
   .approach-row {
-    background: var(--warm-white);
+    background: var(--ivory);
     padding: 24px 32px;
     display: grid;
     grid-template-columns: 32px 140px 1fr;
@@ -200,17 +233,17 @@
   .approach-num {
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px; font-weight: 300;
-    color: var(--gold); line-height: 1.2;
+    color: var(--slate); line-height: 1.2;
   }
 
   .approach-asset {
     font-size: 12px; font-weight: 500;
     letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--ink); padding-top: 3px; line-height: 1.4;
+    color: var(--text-primary); padding-top: 3px; line-height: 1.4;
   }
 
   .approach-desc {
-    font-size: 14px; color: var(--ink-light); line-height: 1.65;
+    font-size: 14px; color: var(--text-secondary); line-height: 1.65;
   }
 
   /* DELIVERABLES */
@@ -220,7 +253,7 @@
   }
 
   .deliverable-cell {
-    background: var(--warm-white); padding: 28px 32px;
+    background: var(--ivory); padding: 28px 32px;
   }
 
   .deliverable-number {
@@ -232,11 +265,11 @@
   .deliverable-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 18px; font-weight: 600;
-    color: var(--ink); margin-bottom: 8px;
+    color: var(--text-primary); margin-bottom: 8px;
   }
 
   .deliverable-desc {
-    font-size: 13px; color: var(--ink-light); line-height: 1.65;
+    font-size: 13px; color: var(--text-secondary); line-height: 1.65;
   }
 
   .deliverable-tools {
@@ -247,12 +280,12 @@
     font-size: 10px; letter-spacing: 0.08em;
     padding: 3px 10px; border-radius: 100px;
     border: 1px solid var(--border);
-    color: var(--sage); background: var(--cream);
+    color: var(--slate-light); background: var(--ivory);
   }
 
   /* IMPACT BLOCK */
   .impact-block {
-    background: var(--ink); padding: 44px 48px;
+    background: var(--navy); padding: 44px 48px;
     border-radius: 2px; margin-top: 28px;
     position: relative; overflow: hidden;
   }
@@ -261,12 +294,12 @@
     content: '';
     position: absolute; top: 0; left: 0;
     width: 3px; height: 100%;
-    background: var(--gold);
+    background: var(--slate);
   }
 
   .impact-label {
     font-size: 10px; letter-spacing: 0.25em;
-    text-transform: uppercase; color: var(--gold-light);
+    text-transform: uppercase; color: var(--slate-light);
     font-weight: 500; margin-bottom: 20px;
   }
 
@@ -282,7 +315,7 @@
 
   .impact-list li::before {
     content: '✓'; position: absolute; left: 0;
-    color: var(--gold-light); font-size: 12px; top: 3px;
+    color: var(--slate-light); font-size: 12px; top: 3px;
   }
 
   /* SKILLS DEMONSTRATED */
@@ -296,12 +329,12 @@
     padding: 8px 18px;
     border: 1px solid var(--border);
     border-radius: 100px;
-    color: var(--ink-light); background: var(--warm-white);
+    color: var(--text-secondary); background: var(--ivory);
   }
 
   /* CTA BLOCK */
   .cta-block {
-    background: var(--warm-white);
+    background: var(--ivory);
     border: 1px solid var(--border);
     padding: 40px 44px; margin-top: 28px;
     display: grid; grid-template-columns: 1fr auto;
@@ -311,11 +344,11 @@
   .cta-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 24px; font-weight: 400;
-    color: var(--ink); margin-bottom: 8px; line-height: 1.3;
+    color: var(--text-primary); margin-bottom: 8px; line-height: 1.3;
   }
 
   .cta-body {
-    font-size: 14px; color: var(--ink-light); line-height: 1.65;
+    font-size: 14px; color: #0F1A2E; line-height: 1.65;
   }
 
   .cta-contact {
@@ -325,11 +358,11 @@
 
   .cta-contact-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-weight: 600; color: var(--ink);
+    font-size: 20px; font-weight: 600; color: var(--text-primary);
   }
 
   .cta-contact-detail {
-    font-size: 12px; color: var(--sage); line-height: 1.6;
+    font-size: 12px; color: var(--slate-light); line-height: 1.6;
   }
 
   /* FOOTER */
@@ -342,11 +375,11 @@
 
   .doc-footer-brand {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-weight: 400; color: var(--ink);
+    font-size: 20px; font-weight: 400; color: var(--text-primary);
   }
 
   .doc-footer-meta {
-    font-size: 11px; color: var(--sage);
+    font-size: 11px; color: var(--slate-light);
     text-align: right; line-height: 1.8;
   }
 
@@ -361,6 +394,266 @@
     .cta-contact { text-align: left; }
     .cover-stats { gap: 28px; }
   }
+
+  
+
+  
+
+  /* ════════════════════════════════════════
+     ABSOLUTE READABILITY FIX
+     Forces white page, dark text everywhere
+     light cards use explicit dark text
+     dark blocks (navy) use explicit white text
+  ════════════════════════════════════════ */
+
+  html { background: #FFFFFF !important;  background: #FFFFFF !important; color: #0F1A2E !important; }
+  body { background: #FFFFFF !important; color: #0F1A2E !important; }
+
+  /* All page-level wrappers */
+  .document, .section, .section-inner,
+  .section-header, .about-grid,
+  main, article, .page-wrap { 
+    background: #FFFFFF !important; 
+    color: #0F1A2E !important;
+  }
+
+  /* Section text — all dark */
+  .section-label { color: #4A6FA5 !important; font-weight: 500 !important; }
+  .section-label::after { background: rgba(74,111,165,0.2) !important; }
+  .section-title { color: #0F1A2E !important; }
+  .section-title em { color: #4A6FA5 !important; }
+  .section-body { color: #2C3E5C !important; }
+  .section-description { color: #2C3E5C !important; }
+  h1, h2, h3, h4, h5, h6 { color: #0F1A2E !important; }
+  p { color: #2C3E5C !important; }
+
+  /* All light background cards — force white bg + dark text */
+  .service-card, .portfolio-card, .about-detail-row,
+  .deliverable-cell, .snapshot-cell, .pillar-card,
+  .voice-cell, .hook-row, .approach-row, .phase-row,
+  .signal-row, .timeline-content, .ba-cell,
+  .wordbank-cell, .tone-cell, .idea-cell,
+  .tracking-cell, .standards-cell, .prep-cell,
+  .checklist-cell, .terms-cell, .sig-cell,
+  .fit-cell, .target-cell, .format-row,
+  .dm-card, .message-block, .close-message,
+  .accept-block, .scope-block, .problem-block,
+  .formula-step, .summary-cell, .skills-cell,
+  .example-stage, .audience-block, .rhythm-block,
+  .stage-card, .post-cell, .week-header,
+  .profile-field, .experience-block, .pillar-key,
+  .copy-instructions, .export-note, .template-note {
+    background: #F4F7FC !important;
+    color: #0F1A2E !important;
+  }
+
+  /* Force ALL text inside light cards to be dark */
+  .service-card *, .portfolio-card *, .about-detail-row *,
+  .deliverable-cell *, .snapshot-cell *, .pillar-card *,
+  .voice-cell *, .hook-row *, .approach-row *, .phase-row *,
+  .signal-row *, .timeline-content *, .ba-cell *,
+  .wordbank-cell *, .tone-cell *, .idea-cell *,
+  .tracking-cell *, .standards-cell *, .prep-cell *,
+  .checklist-cell *, .terms-cell *, .sig-cell *,
+  .fit-cell *, .target-cell *, .format-row *,
+  .dm-card *, .message-block *, .close-message *,
+  .accept-block *, .scope-block *, .problem-block *,
+  .formula-step *, .summary-cell *, .skills-cell *,
+  .example-stage *, .audience-block *, .rhythm-block *,
+  .stage-card *, .post-cell *, .week-header *,
+  .profile-field *, .experience-block *, .pillar-key *,
+  .copy-instructions *, .export-note *, .template-note * {
+    color: #0F1A2E !important;
+  }
+
+  /* Restore accent colors inside cards */
+  .service-number, .service-deliverable,
+  .portfolio-card-label, .snapshot-cell-label,
+  .pillar-tagline, .format-type, .format-col-label,
+  .hook-pillar, .approach-num, .phase-num, .phase-name,
+  .timeline-phase, .signal-type, .listen-signal,
+  .ba-label, .wordbank-cell-title + *, .idea-pillar-label,
+  .summary-cell-icon, .tone-cell-icon, .stage-number,
+  .example-stage-label, .about-detail-label,
+  .field-label, .exp-dates, .exp-company,
+  .service-deliverable, .scope-service-type,
+  .scope-deliverables-label, .problem-label,
+  .message-label, .close-label, .accept-steps li::before,
+  .checklist li::before, .prep-list li::before,
+  .rhythm-list li::before, .voice-list li::before,
+  .target-list li::before, .phase-actions li::before,
+  .stage-output-list li::before,
+  .copy-instructions-list li::before { 
+    color: #4A6FA5 !important; 
+  }
+
+  /* Secondary body text inside cards */
+  .service-desc, .portfolio-card-desc, .pillar-description,
+  .tone-cell-body, .format-col-body, .approach-desc,
+  .phase-body, .timeline-body, .step-body,
+  .signal-desc, .listen-desc, .tracking-cell-body,
+  .standards-cell-body, .terms-cell-body,
+  .scope-description, .scope-not-included, .accept-body,
+  .about-body, .about-body p, .exp-bullets li,
+  .rhythm-list li, .idea-list li, .checklist li,
+  .prep-list li, .target-list li, .phase-actions li,
+  .voice-list li, .fit-list li, .accept-steps li,
+  .stage-output-list li, .stage-description,
+  .dm-notes, .message-text, .close-text {
+    color: #2C3E5C !important;
+  }
+
+  /* Featured items — CRITICAL FIX: white bg, dark text */
+  .featured-item {
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(250,250,250,0.12) !important;
+  }
+  .featured-item * { color: rgba(250,250,250,0.85) !important; }
+  .featured-item-type { color: #6B8FC2 !important; }
+  .featured-item-title { color: #FAFAFA !important; }
+
+  /* Featured BLOCK is dark — keep white text */
+  .featured-block { background: #0F1A2E !important; }
+  .featured-block * { color: rgba(250,250,250,0.85) !important; }
+  .featured-label { color: #6B8FC2 !important; }
+
+  /* DARK BLOCKS — keep white text */
+  .cover, .hero, .stats-strip, .contact-block,
+  .voice-identity, .messaging-block, .impact-block,
+  .questionnaire-block, .month-overview, .philosophy-block,
+  .close-block, .investment-block, .dm-message,
+  .stage-prompt-block, .replication-block,
+  .case-study-block, nav { 
+    background: #0F1A2E !important; 
+  }
+
+  .cover *, .hero *, .stats-strip *,
+  .voice-identity *, .messaging-block *, .impact-block *,
+  .questionnaire-block *, .month-overview *,
+  .philosophy-block *, .close-block *,
+  .investment-block *, .dm-message *,
+  .stage-prompt-block *, .replication-block *,
+  .case-study-block * {
+    color: rgba(250,250,250,0.85) !important;
+  }
+
+  /* Contact block is navy-mid */
+  .contact-block { background: #162440 !important; }
+  .contact-title, .contact-label { color: #FAFAFA !important; }
+  .contact-title em { color: #6B8FC2 !important; }
+  .contact-body { color: rgba(250,250,250,0.55) !important; }
+
+  /* Nav */
+  nav { background: rgba(15,26,46,0.95) !important; }
+  .nav-brand { color: #FAFAFA !important; }
+  .nav-brand em { color: #6B8FC2 !important; }
+  .nav-links a { color: rgba(250,250,250,0.6) !important; }
+
+  /* Dark block accent text */
+  .cover-label, .voice-identity-label, .messaging-label,
+  .impact-label, .q-label, .philosophy-label,
+  .dm-message-label, .stage-prompt-label,
+  .featured-label, .contact-label,
+  .month-stat-label, .cover-meta-item span:first-child,
+  .cs-stat-label, .stat-label { 
+    color: #6B8FC2 !important; 
+  }
+
+  .cover-title, .cover-stat-value, .stat-value,
+  .messaging-statement, .voice-identity-statement,
+  .q-section-title, .cs-stat-value,
+  .case-study-title, .investment-item-value { 
+    color: #FAFAFA !important; 
+  }
+
+  .cover-subtitle, .philosophy-body, .q-intro,
+  .messaging-item-value, .investment-note,
+  .cover-description, .cover-byline-title,
+  .case-study-body, .hero-body { 
+    color: rgba(250,250,250,0.6) !important; 
+  }
+
+  /* Footer — light bg, dark text */
+  footer { background: #FFFFFF !important; border-top: 1px solid rgba(74,111,165,0.15) !important; }
+  .doc-footer { border-top: 1px solid rgba(74,111,165,0.15) !important; }
+  .doc-footer-brand, .footer-brand, .doc-footer-brand * { color: #0F1A2E !important; }
+  .doc-footer-brand em, .footer-brand em { color: #4A6FA5 !important; }
+  .doc-footer-meta, .footer-meta { color: #4A6FA5 !important; }
+
+  /* About section on portfolio — explicitly white bg */
+  #about, #about .section-inner, .about-grid,
+  .about-body, .about-details { 
+    background: #FFFFFF !important;
+    color: #2C3E5C !important;
+  }
+  .about-body p { color: #2C3E5C !important; }
+  .about-body strong { color: #0F1A2E !important; }
+
+  /* Skills grid on LinkedIn */
+  .skills-grid { background: rgba(74,111,165,0.06) !important; }
+  .skills-grid * { color: #0F1A2E !important; }
+  .skill-tag { 
+    background: #FFFFFF !important; 
+    color: #2C3E5C !important;
+    border-color: rgba(74,111,165,0.25) !important;
+  }
+
+  /* Table header stays dark */
+  .table-header { background: #0F1A2E !important; }
+  .table-header * { color: rgba(250,250,250,0.55) !important; }
+
+  /* Timeline number col stays dark */
+  .timeline-time, .step-number-col, .exp-icon { 
+    background: #0F1A2E !important; 
+  }
+  .timeline-time *, .step-number-col *, .exp-icon * { 
+    color: rgba(250,250,250,0.85) !important; 
+  }
+  .timeline-time-value, .step-num { color: #6B8FC2 !important; }
+
+  /* Stage tool badge stays dark */
+  .stage-tool-badge { background: #0F1A2E !important; }
+  .stage-tool-badge span { color: #6B8FC2 !important; }
+
+  /* Hero section explicitly navy */
+  .hero { background: #0F1A2E !important; }
+  .hero-label { color: #6B8FC2 !important; }
+  .hero-title { color: #FAFAFA !important; }
+  .hero-title em { color: #6B8FC2 !important; }
+  .hero-subtitle { color: rgba(250,250,250,0.45) !important; }
+  .hero-body { color: rgba(250,250,250,0.6) !important; }
+  .hero-body strong { color: #FAFAFA !important; }
+
+  /* Buttons */
+  .btn-primary { background: #4A6FA5 !important; color: #FFFFFF !important; }
+  .btn-primary:hover { background: #6B8FC2 !important; }
+  .btn-secondary { border-color: rgba(250,250,250,0.2) !important; color: rgba(250,250,250,0.7) !important; }
+
+  /* Tags */
+  .tag, .tool-tag, .ad-tag {
+    background: #FFFFFF !important;
+    color: #2C3E5C !important;
+    border-color: rgba(74,111,165,0.25) !important;
+  }
+  .tag-use { 
+    background: rgba(74,111,165,0.08) !important;
+    color: #0F1A2E !important;
+    border-color: #4A6FA5 !important;
+  }
+  .tag-avoid { 
+    color: #4A6FA5 !important;
+    background: #FFFFFF !important;
+  }
+
+  /* Pillar number watermarks */
+  .pillar-number, .portfolio-card-number, 
+  .deliverable-number { 
+    color: rgba(74,111,165,0.12) !important; 
+  }
+
+  /* Cover line accent */
+  .cover-line { background: #4A6FA5 !important; }
+
 </style>
 </head>
 <body>
@@ -371,9 +664,9 @@
     <div class="cover-byline">
       <div class="cover-byline-name">Ada Pinales</div>
       <div class="cover-byline-divider"></div>
-      <div class="cover-byline-title">Content Systems &amp; AI Workflow Specialist for Creators</div>
+      <div class="cover-byline-title">Content Systems Specialist for Women Creators</div>
     </div>
-    <div class="cover-label">Case Study — Content Systems & AI Workflows</div>
+    <div class="cover-label">Case Study — Content Systems</div>
     <div class="cover-line"></div>
     <div class="cover-title">Building a Content<br>System for <em>The Girl</em><br><em>Mompreneur</em></div>
     <div class="cover-description">
@@ -450,7 +743,7 @@
       <div class="approach-row">
         <div class="approach-num">4</div>
         <div class="approach-asset">Repurposing Workflow</div>
-        <div class="approach-desc">Designed a 6-stage AI-assisted workflow that turns one original insight into six platform-ready assets — Reel script, caption, carousel, email, community content, and offer seed — using Claude, ChatGPT, and Canva in sequence.</div>
+        <div class="approach-desc">Designed a 6-stage system-driven workflow that turns one original insight into six platform-ready assets — Reel script, caption, carousel, email, community content, and offer seed — using Claude, ChatGPT, and Canva in sequence.</div>
       </div>
     </div>
   </div>
@@ -512,10 +805,10 @@
     <div class="impact-block">
       <div class="impact-label">Results of the Build</div>
       <ul class="impact-list">
-        <li>Content creation shifted from reactive to intentional — every post now maps to a defined strategic position before it's written</li>
+        <li>Content creation shifted from reactive to intentional — no more guessing what to post</li>
         <li>Brand voice is documented and replicable — any piece of content can be evaluated against a clear written standard</li>
         <li>Monthly content planning dropped from unstructured to a 22-post system with themes, formats, and hooks pre-built</li>
-        <li>One insight now produces six assets instead of one — tripling content output without increasing ideation time</li>
+        <li>One long-form piece now produces multiple assets — more content, less time, no starting from scratch</li>
         <li>AI tools moved from ad hoc use to a defined workflow — Claude, ChatGPT, and Canva each have a specific role in the production sequence</li>
         <li>The entire content ecosystem is documented — meaning it can be handed off, replicated, or scaled without starting from scratch</li>
       </ul>
@@ -555,13 +848,13 @@
 
     <div class="cta-block">
       <div>
-        <div class="cta-title">This is what I build for creators.</div>
+        <div class="cta-title">This is what I build for women creators.</div>
         <div class="cta-body">Content systems, AI workflows, repurposing processes, and brand voice documentation — so your content operates from a foundation, not a feeling. If your content creation feels reactive, inconsistent, or like it's costing you more time than it should, let's talk about what a system could look like for your brand.</div>
       </div>
       <div class="cta-contact">
         <div class="cta-contact-name">Ada Pinales</div>
         <div class="cta-contact-detail">
-          Content Systems &amp; AI Workflow Specialist for Creators<br>
+          Content Systems Specialist for Women Creators<br>
           Content Systems · AI Workflows<br>
           Content Repurposing<br>
           @iamAdaPinales

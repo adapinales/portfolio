@@ -6,24 +6,57 @@
 <title>The Girl Mompreneur — Brand Voice Guidelines</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream: #FFFFFF;
-    --warm-white: #FAFAFA;
-    --ink: #1C1917;
-    --ink-light: #44403C;
-    --gold: #B8860B;
-    --gold-light: #D4A017;
-    --terracotta: #C4623A;
-    --sage: #6B7C6E;
-    --border: #E8E0D4;
+      :root {
+    /* Core palette */
+    --navy:           #0F1A2E;
+    --navy-mid:       #162440;
+    --navy-light:     #1E3358;
+    --slate:          #4A6FA5;
+    --slate-light:    #6B8FC2;
+    --ivory:          #F8F7F4;
+    --white:          #FAFAFA;
+
+    /* Text — LIGHT (use on dark/navy backgrounds) */
+    --text-light:          #FAFAFA;
+    --text-light-secondary: rgba(250,250,250,0.65);
+    --text-light-muted:     rgba(250,250,250,0.35);
+
+    /* Text — DARK (use on ivory/white backgrounds) */
+    --text-dark:           #0F1A2E;
+    --text-dark-secondary: #2C3E5C;
+    --text-dark-muted:     #4A6FA5;
+
+    /* Borders */
+    --border:         rgba(74,111,165,0.2);
+    --border-mid:     rgba(74,111,165,0.35);
+    --border-dark:    rgba(15,26,46,0.15);
+
     --section-gap: 72px;
+
+    /* Legacy aliases — dark text versions for light backgrounds */
+    --cream:          #F8F7F4;
+    --warm-white:     #F8F7F4;
+    --ink:            #0F1A2E;
+    --ink-light:      #2C3E5C;
+    --ink-mid:        #162440;
+
+    /* Legacy aliases — light versions for dark backgrounds */
+    --gold:           #6B8FC2;
+    --gold-light:     #8BADD4;
+    --terracotta:     #4A6FA5;
+    --sage:           #6B8FC2;
+
+    /* Body text — default dark for light page body */
+    --text-primary:   #0F1A2E;
+    --text-secondary: #2C3E5C;
+    --text-muted:     #4A6FA5;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: var(--cream);
-    color: var(--ink);
+    background: #FFFFFF;
+    color: #0F1A2E;
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     line-height: 1.7;
@@ -33,7 +66,7 @@
   /* COVER */
   .cover {
     min-height: 100vh;
-    background: #2C1810;
+    background: #0F1A2E;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,14 +103,14 @@
     font-weight: 500;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--gold-light);
+    color: var(--slate-light);
     margin-bottom: 32px;
   }
 
   .cover-line {
     width: 60px;
     height: 1px;
-    background: var(--gold);
+    background: var(--slate);
     margin-bottom: 48px;
   }
 
@@ -86,13 +119,13 @@
     font-size: clamp(52px, 7vw, 88px);
     font-weight: 300;
     line-height: 1.05;
-    color: #FDFAF6;
+    color: #FAFAFA;
     margin-bottom: 8px;
   }
 
   .cover-title em {
     font-style: italic;
-    color: var(--gold-light);
+    color: var(--slate-light);
   }
 
   .cover-subtitle {
@@ -136,19 +169,19 @@
   }
 
   .export-note {
-    background: #F5F5F5;
+    background: #EDF1F7;
     border: 1px solid var(--border);
     border-radius: 2px;
     padding: 16px 24px;
     margin-bottom: 48px;
     font-size: 12px;
-    color: var(--ink-light);
+    color: var(--text-secondary);
     display: flex;
     align-items: center;
     gap: 10px;
   }
 
-  .export-note strong { color: var(--ink); }
+  .export-note strong { color: var(--text-primary); }
 
   .section {
     margin-bottom: var(--section-gap);
@@ -164,7 +197,7 @@
     font-size: 10px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--terracotta);
+    color: var(--slate);
     font-weight: 500;
     margin-bottom: 20px;
     display: flex;
@@ -184,26 +217,26 @@
     font-size: clamp(28px, 4vw, 40px);
     font-weight: 400;
     line-height: 1.2;
-    color: var(--ink);
+    color: var(--text-primary);
     margin-bottom: 20px;
   }
 
   .section-title em {
     font-style: italic;
-    color: var(--gold);
+    color: var(--slate);
   }
 
   .section-body {
     font-size: 15px;
     line-height: 1.8;
-    color: var(--ink-light);
+    color: #0F1A2E;
     max-width: 680px;
     margin-bottom: 32px;
   }
 
   /* VOICE IDENTITY BLOCK */
   .voice-identity {
-    background: #2C1810;
+    background: #0F1A2E;
     padding: 48px;
     border-radius: 2px;
     position: relative;
@@ -225,7 +258,7 @@
     font-size: 10px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--gold-light);
+    color: var(--slate-light);
     margin-bottom: 20px;
     font-weight: 500;
   }
@@ -235,7 +268,7 @@
     font-size: clamp(20px, 2.8vw, 28px);
     font-weight: 300;
     font-style: italic;
-    color: #FDFAF6;
+    color: #FAFAFA;
     line-height: 1.5;
     margin-bottom: 32px;
     position: relative;
@@ -267,8 +300,8 @@
 
   /* AUDIENCE STATE */
   .audience-block {
-    background: var(--warm-white);
-    border-left: 3px solid var(--gold);
+    background: var(--ivory);
+    border-left: 3px solid var(--slate);
     padding: 32px 36px;
     margin-top: 32px;
   }
@@ -277,7 +310,7 @@
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--sage);
+    color: var(--slate-light);
     font-weight: 500;
     margin-bottom: 12px;
   }
@@ -287,14 +320,14 @@
     font-size: 22px;
     font-weight: 400;
     font-style: italic;
-    color: var(--ink);
+    color: var(--text-primary);
     line-height: 1.5;
     margin-bottom: 16px;
   }
 
   .audience-body {
     font-size: 14.5px;
-    color: var(--ink-light);
+    color: #0F1A2E;
     line-height: 1.75;
     max-width: 600px;
   }
@@ -309,14 +342,14 @@
   }
 
   .tone-cell {
-    background: var(--warm-white);
+    background: var(--ivory);
     padding: 28px 24px;
   }
 
   .tone-cell-icon {
     font-family: 'Cormorant Garamond', serif;
     font-size: 32px;
-    color: var(--gold);
+    color: var(--slate);
     margin-bottom: 12px;
     line-height: 1;
   }
@@ -325,13 +358,13 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 18px;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--text-primary);
     margin-bottom: 8px;
   }
 
   .tone-cell-body {
     font-size: 13px;
-    color: var(--ink-light);
+    color: #0F1A2E;
     line-height: 1.65;
   }
 
@@ -344,7 +377,7 @@
   }
 
   .format-row {
-    background: var(--warm-white);
+    background: var(--ivory);
     padding: 28px 32px;
     display: grid;
     grid-template-columns: 160px 1fr 1fr;
@@ -356,7 +389,7 @@
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--sage);
+    color: var(--slate-light);
     font-weight: 500;
     padding-top: 2px;
   }
@@ -365,14 +398,14 @@
     font-size: 10px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--terracotta);
+    color: var(--slate);
     font-weight: 500;
     margin-bottom: 8px;
   }
 
   .format-col-body {
     font-size: 13.5px;
-    color: var(--ink-light);
+    color: #0F1A2E;
     line-height: 1.65;
   }
 
@@ -386,7 +419,7 @@
   }
 
   .wordbank-cell {
-    background: var(--warm-white);
+    background: var(--ivory);
     padding: 28px 32px;
   }
 
@@ -394,7 +427,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 18px;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--text-primary);
     margin-bottom: 16px;
   }
 
@@ -409,17 +442,17 @@
     letter-spacing: 0.06em;
     padding: 5px 14px;
     border-radius: 100px;
-    color: var(--ink-light);
+    color: var(--text-secondary);
   }
 
   .tag-use {
-    border: 1px solid var(--gold);
+    border: 1px solid var(--slate);
     background: rgba(184,134,11,0.06);
   }
 
   .tag-avoid {
     border: 1px solid var(--border);
-    background: var(--cream);
+    background: var(--ivory);
     text-decoration: line-through;
     opacity: 0.6;
   }
@@ -444,7 +477,7 @@
   }
 
   .ba-cell.before { background: #FDF8F6; }
-  .ba-cell.after { background: var(--warm-white); }
+  .ba-cell.after { background: var(--ivory); }
 
   .ba-label {
     font-size: 10px;
@@ -454,14 +487,14 @@
     margin-bottom: 10px;
   }
 
-  .ba-label.before-label { color: var(--terracotta); }
-  .ba-label.after-label { color: var(--sage); }
+  .ba-label.before-label { color: var(--slate); }
+  .ba-label.after-label { color: var(--slate-light); }
 
   .ba-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 16px;
     font-style: italic;
-    color: var(--ink);
+    color: var(--text-primary);
     line-height: 1.55;
   }
 
@@ -476,7 +509,7 @@
   }
 
   .formula-step {
-    background: var(--warm-white);
+    background: var(--ivory);
     padding: 28px 36px;
     display: grid;
     grid-template-columns: 48px 1fr;
@@ -488,7 +521,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 40px;
     font-weight: 300;
-    color: var(--gold);
+    color: var(--slate);
     line-height: 1;
   }
 
@@ -496,13 +529,13 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 20px;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--text-primary);
     margin-bottom: 6px;
   }
 
   .step-body {
     font-size: 14px;
-    color: var(--ink-light);
+    color: #0F1A2E;
     line-height: 1.7;
   }
 
@@ -510,7 +543,7 @@
     margin-top: 10px;
     font-size: 13px;
     font-style: italic;
-    color: var(--sage);
+    color: var(--slate-light);
     padding-left: 12px;
     border-left: 2px solid var(--border);
   }
@@ -531,12 +564,12 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
     font-weight: 400;
-    color: var(--ink);
+    color: var(--text-primary);
   }
 
   .doc-footer-meta {
     font-size: 11px;
-    color: var(--sage);
+    color: var(--slate-light);
     text-align: right;
     line-height: 1.8;
   }
@@ -551,6 +584,266 @@
     .ba-row { grid-template-columns: 1fr; }
     .cover-meta { gap: 28px; }
   }
+
+  
+
+  
+
+  /* ════════════════════════════════════════
+     ABSOLUTE READABILITY FIX
+     Forces white page, dark text everywhere
+     light cards use explicit dark text
+     dark blocks (navy) use explicit white text
+  ════════════════════════════════════════ */
+
+  html { background: #FFFFFF !important;  background: #FFFFFF !important; color: #0F1A2E !important; }
+  body { background: #FFFFFF !important; color: #0F1A2E !important; }
+
+  /* All page-level wrappers */
+  .document, .section, .section-inner,
+  .section-header, .about-grid,
+  main, article, .page-wrap { 
+    background: #FFFFFF !important; 
+    color: #0F1A2E !important;
+  }
+
+  /* Section text — all dark */
+  .section-label { color: #4A6FA5 !important; font-weight: 500 !important; }
+  .section-label::after { background: rgba(74,111,165,0.2) !important; }
+  .section-title { color: #0F1A2E !important; }
+  .section-title em { color: #4A6FA5 !important; }
+  .section-body { color: #2C3E5C !important; }
+  .section-description { color: #2C3E5C !important; }
+  h1, h2, h3, h4, h5, h6 { color: #0F1A2E !important; }
+  p { color: #2C3E5C !important; }
+
+  /* All light background cards — force white bg + dark text */
+  .service-card, .portfolio-card, .about-detail-row,
+  .deliverable-cell, .snapshot-cell, .pillar-card,
+  .voice-cell, .hook-row, .approach-row, .phase-row,
+  .signal-row, .timeline-content, .ba-cell,
+  .wordbank-cell, .tone-cell, .idea-cell,
+  .tracking-cell, .standards-cell, .prep-cell,
+  .checklist-cell, .terms-cell, .sig-cell,
+  .fit-cell, .target-cell, .format-row,
+  .dm-card, .message-block, .close-message,
+  .accept-block, .scope-block, .problem-block,
+  .formula-step, .summary-cell, .skills-cell,
+  .example-stage, .audience-block, .rhythm-block,
+  .stage-card, .post-cell, .week-header,
+  .profile-field, .experience-block, .pillar-key,
+  .copy-instructions, .export-note, .template-note {
+    background: #F4F7FC !important;
+    color: #0F1A2E !important;
+  }
+
+  /* Force ALL text inside light cards to be dark */
+  .service-card *, .portfolio-card *, .about-detail-row *,
+  .deliverable-cell *, .snapshot-cell *, .pillar-card *,
+  .voice-cell *, .hook-row *, .approach-row *, .phase-row *,
+  .signal-row *, .timeline-content *, .ba-cell *,
+  .wordbank-cell *, .tone-cell *, .idea-cell *,
+  .tracking-cell *, .standards-cell *, .prep-cell *,
+  .checklist-cell *, .terms-cell *, .sig-cell *,
+  .fit-cell *, .target-cell *, .format-row *,
+  .dm-card *, .message-block *, .close-message *,
+  .accept-block *, .scope-block *, .problem-block *,
+  .formula-step *, .summary-cell *, .skills-cell *,
+  .example-stage *, .audience-block *, .rhythm-block *,
+  .stage-card *, .post-cell *, .week-header *,
+  .profile-field *, .experience-block *, .pillar-key *,
+  .copy-instructions *, .export-note *, .template-note * {
+    color: #0F1A2E !important;
+  }
+
+  /* Restore accent colors inside cards */
+  .service-number, .service-deliverable,
+  .portfolio-card-label, .snapshot-cell-label,
+  .pillar-tagline, .format-type, .format-col-label,
+  .hook-pillar, .approach-num, .phase-num, .phase-name,
+  .timeline-phase, .signal-type, .listen-signal,
+  .ba-label, .wordbank-cell-title + *, .idea-pillar-label,
+  .summary-cell-icon, .tone-cell-icon, .stage-number,
+  .example-stage-label, .about-detail-label,
+  .field-label, .exp-dates, .exp-company,
+  .service-deliverable, .scope-service-type,
+  .scope-deliverables-label, .problem-label,
+  .message-label, .close-label, .accept-steps li::before,
+  .checklist li::before, .prep-list li::before,
+  .rhythm-list li::before, .voice-list li::before,
+  .target-list li::before, .phase-actions li::before,
+  .stage-output-list li::before,
+  .copy-instructions-list li::before { 
+    color: #4A6FA5 !important; 
+  }
+
+  /* Secondary body text inside cards */
+  .service-desc, .portfolio-card-desc, .pillar-description,
+  .tone-cell-body, .format-col-body, .approach-desc,
+  .phase-body, .timeline-body, .step-body,
+  .signal-desc, .listen-desc, .tracking-cell-body,
+  .standards-cell-body, .terms-cell-body,
+  .scope-description, .scope-not-included, .accept-body,
+  .about-body, .about-body p, .exp-bullets li,
+  .rhythm-list li, .idea-list li, .checklist li,
+  .prep-list li, .target-list li, .phase-actions li,
+  .voice-list li, .fit-list li, .accept-steps li,
+  .stage-output-list li, .stage-description,
+  .dm-notes, .message-text, .close-text {
+    color: #2C3E5C !important;
+  }
+
+  /* Featured items — CRITICAL FIX: white bg, dark text */
+  .featured-item {
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(250,250,250,0.12) !important;
+  }
+  .featured-item * { color: rgba(250,250,250,0.85) !important; }
+  .featured-item-type { color: #6B8FC2 !important; }
+  .featured-item-title { color: #FAFAFA !important; }
+
+  /* Featured BLOCK is dark — keep white text */
+  .featured-block { background: #0F1A2E !important; }
+  .featured-block * { color: rgba(250,250,250,0.85) !important; }
+  .featured-label { color: #6B8FC2 !important; }
+
+  /* DARK BLOCKS — keep white text */
+  .cover, .hero, .stats-strip, .contact-block,
+  .voice-identity, .messaging-block, .impact-block,
+  .questionnaire-block, .month-overview, .philosophy-block,
+  .close-block, .investment-block, .dm-message,
+  .stage-prompt-block, .replication-block,
+  .case-study-block, nav { 
+    background: #0F1A2E !important; 
+  }
+
+  .cover *, .hero *, .stats-strip *,
+  .voice-identity *, .messaging-block *, .impact-block *,
+  .questionnaire-block *, .month-overview *,
+  .philosophy-block *, .close-block *,
+  .investment-block *, .dm-message *,
+  .stage-prompt-block *, .replication-block *,
+  .case-study-block * {
+    color: rgba(250,250,250,0.85) !important;
+  }
+
+  /* Contact block is navy-mid */
+  .contact-block { background: #162440 !important; }
+  .contact-title, .contact-label { color: #FAFAFA !important; }
+  .contact-title em { color: #6B8FC2 !important; }
+  .contact-body { color: rgba(250,250,250,0.55) !important; }
+
+  /* Nav */
+  nav { background: rgba(15,26,46,0.95) !important; }
+  .nav-brand { color: #FAFAFA !important; }
+  .nav-brand em { color: #6B8FC2 !important; }
+  .nav-links a { color: rgba(250,250,250,0.6) !important; }
+
+  /* Dark block accent text */
+  .cover-label, .voice-identity-label, .messaging-label,
+  .impact-label, .q-label, .philosophy-label,
+  .dm-message-label, .stage-prompt-label,
+  .featured-label, .contact-label,
+  .month-stat-label, .cover-meta-item span:first-child,
+  .cs-stat-label, .stat-label { 
+    color: #6B8FC2 !important; 
+  }
+
+  .cover-title, .cover-stat-value, .stat-value,
+  .messaging-statement, .voice-identity-statement,
+  .q-section-title, .cs-stat-value,
+  .case-study-title, .investment-item-value { 
+    color: #FAFAFA !important; 
+  }
+
+  .cover-subtitle, .philosophy-body, .q-intro,
+  .messaging-item-value, .investment-note,
+  .cover-description, .cover-byline-title,
+  .case-study-body, .hero-body { 
+    color: rgba(250,250,250,0.6) !important; 
+  }
+
+  /* Footer — light bg, dark text */
+  footer { background: #FFFFFF !important; border-top: 1px solid rgba(74,111,165,0.15) !important; }
+  .doc-footer { border-top: 1px solid rgba(74,111,165,0.15) !important; }
+  .doc-footer-brand, .footer-brand, .doc-footer-brand * { color: #0F1A2E !important; }
+  .doc-footer-brand em, .footer-brand em { color: #4A6FA5 !important; }
+  .doc-footer-meta, .footer-meta { color: #4A6FA5 !important; }
+
+  /* About section on portfolio — explicitly white bg */
+  #about, #about .section-inner, .about-grid,
+  .about-body, .about-details { 
+    background: #FFFFFF !important;
+    color: #2C3E5C !important;
+  }
+  .about-body p { color: #2C3E5C !important; }
+  .about-body strong { color: #0F1A2E !important; }
+
+  /* Skills grid on LinkedIn */
+  .skills-grid { background: rgba(74,111,165,0.06) !important; }
+  .skills-grid * { color: #0F1A2E !important; }
+  .skill-tag { 
+    background: #FFFFFF !important; 
+    color: #2C3E5C !important;
+    border-color: rgba(74,111,165,0.25) !important;
+  }
+
+  /* Table header stays dark */
+  .table-header { background: #0F1A2E !important; }
+  .table-header * { color: rgba(250,250,250,0.55) !important; }
+
+  /* Timeline number col stays dark */
+  .timeline-time, .step-number-col, .exp-icon { 
+    background: #0F1A2E !important; 
+  }
+  .timeline-time *, .step-number-col *, .exp-icon * { 
+    color: rgba(250,250,250,0.85) !important; 
+  }
+  .timeline-time-value, .step-num { color: #6B8FC2 !important; }
+
+  /* Stage tool badge stays dark */
+  .stage-tool-badge { background: #0F1A2E !important; }
+  .stage-tool-badge span { color: #6B8FC2 !important; }
+
+  /* Hero section explicitly navy */
+  .hero { background: #0F1A2E !important; }
+  .hero-label { color: #6B8FC2 !important; }
+  .hero-title { color: #FAFAFA !important; }
+  .hero-title em { color: #6B8FC2 !important; }
+  .hero-subtitle { color: rgba(250,250,250,0.45) !important; }
+  .hero-body { color: rgba(250,250,250,0.6) !important; }
+  .hero-body strong { color: #FAFAFA !important; }
+
+  /* Buttons */
+  .btn-primary { background: #4A6FA5 !important; color: #FFFFFF !important; }
+  .btn-primary:hover { background: #6B8FC2 !important; }
+  .btn-secondary { border-color: rgba(250,250,250,0.2) !important; color: rgba(250,250,250,0.7) !important; }
+
+  /* Tags */
+  .tag, .tool-tag, .ad-tag {
+    background: #FFFFFF !important;
+    color: #2C3E5C !important;
+    border-color: rgba(74,111,165,0.25) !important;
+  }
+  .tag-use { 
+    background: rgba(74,111,165,0.08) !important;
+    color: #0F1A2E !important;
+    border-color: #4A6FA5 !important;
+  }
+  .tag-avoid { 
+    color: #4A6FA5 !important;
+    background: #FFFFFF !important;
+  }
+
+  /* Pillar number watermarks */
+  .pillar-number, .portfolio-card-number, 
+  .deliverable-number { 
+    color: rgba(74,111,165,0.12) !important; 
+  }
+
+  /* Cover line accent */
+  .cover-line { background: #4A6FA5 !important; }
+
 </style>
 </head>
 <body>
@@ -585,7 +878,7 @@
 <div class="document">
 
   <div class="export-note">
-    <strong>Portfolio Document:</strong>&nbsp; Brand Voice Guidelines built as a live case study for Ada Pinales — Content Systems &amp; AI Workflow Specialist for Creators. Developed using Claude, ChatGPT, and Canva.
+    <strong>Portfolio Document:</strong>&nbsp; Brand Voice Guidelines built as a live case study for Ada Pinales — Content Systems Specialist for Women Creators. Developed using Claude, ChatGPT, and Canva.
   </div>
 
   <!-- VOICE IDENTITY -->
@@ -860,7 +1153,7 @@
     <div class="doc-footer-brand">The Girl Mompreneur</div>
     <div class="doc-footer-meta">
       Prepared by Ada Pinales<br>
-      Content Systems &amp; AI Workflow Specialist for Creators<br>
+      Content Systems Specialist for Women Creators<br>
       @iamAdaPinales
     </div>
   </div>
