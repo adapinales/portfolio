@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Girl Mompreneur — Monthly Content Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFFFFF;
+    --warm-white: #FAFAFA;
+    --ink: #1C1917;
+    --ink-light: #44403C;
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --terracotta: #C4623A;
+    --sage: #6B7C6E;
+    --border: #E8E0D4;
+    --pillar-1: #B8860B;
+    --pillar-2: #C4623A;
+    --pillar-3: #6B7C6E;
+    --section-gap: 72px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 10%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,134,11,0.12) 0%, transparent 70%);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 5%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,98,58,0.08) 0%, transparent 70%);
+  }
+
+  .cover-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 32px;
+  }
+
+  .cover-line { width: 60px; height: 1px; background: var(--gold); margin-bottom: 48px; }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 300; line-height: 1.05;
+    color: #FDFAF6; margin-bottom: 8px;
+  }
+
+  .cover-title em { font-style: italic; color: var(--gold-light); }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300; font-style: italic;
+    color: rgba(253,250,246,0.5); margin-bottom: 56px;
+  }
+
+  .cover-meta { display: flex; gap: 48px; flex-wrap: wrap; }
+
+  .cover-meta-item { display: flex; flex-direction: column; gap: 4px; }
+
+  .cover-meta-item span:first-child {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(253,250,246,0.35);
+  }
+
+  .cover-meta-item span:last-child { font-size: 14px; color: rgba(253,250,246,0.75); }
+
+  /* DOCUMENT */
+  .document { max-width: 960px; margin: 0 auto; padding: 80px 48px; }
+
+  .export-note {
+    background: #F5F5F5; border: 1px solid var(--border);
+    border-radius: 2px; padding: 16px 24px; margin-bottom: 48px;
+    font-size: 12px; color: var(--ink-light);
+  }
+
+  .export-note strong { color: var(--ink); }
+
+  .section { margin-bottom: var(--section-gap); animation: fadeUp 0.6s ease both; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-label {
+    font-size: 10px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--terracotta);
+    font-weight: 500; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 400; line-height: 1.2;
+    color: var(--ink); margin-bottom: 20px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-body {
+    font-size: 15px; line-height: 1.8;
+    color: var(--ink-light); max-width: 680px; margin-bottom: 32px;
+  }
+
+  /* MONTH OVERVIEW */
+  .month-overview {
+    background: var(--ink); padding: 40px 48px;
+    border-radius: 2px; margin-bottom: 32px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  .month-stat-label {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(253,250,246,0.45);
+    margin-bottom: 8px;
+  }
+
+  .month-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300;
+    color: #FDFAF6; line-height: 1.1; margin-bottom: 4px;
+  }
+
+  .month-stat-sub { font-size: 12px; color: rgba(253,250,246,0.5); }
+
+  /* PILLAR KEY */
+  .pillar-key {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    margin-bottom: 32px; padding: 20px 24px;
+    background: var(--warm-white); border: 1px solid var(--border);
+  }
+
+  .pillar-key-item { display: flex; align-items: center; gap: 10px; }
+
+  .pillar-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  .pillar-key-label { font-size: 12px; color: var(--ink-light); letter-spacing: 0.05em; }
+
+  /* WEEK BLOCKS */
+  .week-block { margin-bottom: 4px; }
+
+  .week-header {
+    background: var(--warm-white);
+    padding: 16px 24px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    border-left: 3px solid var(--border);
+  }
+
+  .week-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 600; color: var(--ink);
+  }
+
+  .week-theme {
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--sage);
+  }
+
+  .week-posts { display: flex; flex-direction: column; gap: 2px; }
+
+  .post-row {
+    display: grid;
+    grid-template-columns: 80px 100px 80px 1fr 180px;
+    gap: 0;
+    background: var(--border);
+  }
+
+  .post-cell {
+    background: var(--cream);
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.5;
+    border-right: 1px solid var(--border);
+  }
+
+  .post-cell:last-child { border-right: none; }
+
+  .post-cell.day {
+    font-weight: 500; color: var(--ink);
+    font-size: 12px; display: flex;
+    align-items: center;
+  }
+
+  .post-cell.format {
+    display: flex; align-items: center;
+  }
+
+  .format-badge {
+    font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 3px 10px;
+    border-radius: 100px; font-weight: 500;
+  }
+
+  .format-reel { background: rgba(184,134,11,0.1); color: var(--gold); border: 1px solid rgba(184,134,11,0.3); }
+  .format-carousel { background: rgba(196,98,58,0.08); color: var(--terracotta); border: 1px solid rgba(196,98,58,0.25); }
+  .format-static { background: rgba(107,124,110,0.08); color: var(--sage); border: 1px solid rgba(107,124,110,0.25); }
+
+  .post-cell.pillar {
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .pillar-indicator {
+    width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  .pillar-text { font-size: 11px; color: var(--ink-light); }
+
+  .post-cell.topic { font-size: 13px; color: var(--ink); }
+
+  .post-cell.hook {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 14px;
+    color: var(--ink-light); background: var(--warm-white);
+  }
+
+  /* TABLE HEADER */
+  .table-header {
+    display: grid;
+    grid-template-columns: 80px 100px 80px 1fr 180px;
+    gap: 0;
+    background: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .table-header-cell {
+    padding: 10px 20px;
+    font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(253,250,246,0.5);
+    font-weight: 500;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .table-header-cell:last-child { border-right: none; }
+
+  /* CONTENT IDEAS BANK */
+  .ideas-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px; background: var(--border); margin-top: 32px;
+  }
+
+  .idea-cell { background: var(--warm-white); padding: 24px 28px; }
+
+  .idea-pillar-label {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; font-weight: 500;
+    margin-bottom: 16px; display: flex;
+    align-items: center; gap: 8px;
+  }
+
+  .idea-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .idea-list li {
+    font-size: 13px; color: var(--ink-light);
+    padding-left: 14px; position: relative; line-height: 1.5;
+  }
+
+  .idea-list li::before {
+    content: '—'; position: absolute; left: 0;
+    color: var(--border);
+  }
+
+  /* POSTING RHYTHM */
+  .rhythm-block {
+    background: var(--warm-white); border: 1px solid var(--border);
+    padding: 32px 36px; margin-top: 32px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+  }
+
+  .rhythm-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--ink); margin-bottom: 16px;
+  }
+
+  .rhythm-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .rhythm-list li {
+    font-size: 13.5px; color: var(--ink-light);
+    padding-left: 16px; position: relative; line-height: 1.55;
+  }
+
+  .rhythm-list li::before {
+    content: '◦'; position: absolute; left: 0; color: var(--gold);
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    border-top: 1px solid var(--border); padding-top: 40px;
+    margin-top: 80px; display: flex;
+    justify-content: space-between; align-items: flex-end;
+    flex-wrap: wrap; gap: 16px;
+  }
+
+  .doc-footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; color: var(--ink);
+  }
+
+  .doc-footer-meta { font-size: 11px; color: var(--sage); text-align: right; line-height: 1.8; }
+
+  @media (max-width: 768px) {
+    .document { padding: 48px 20px; }
+    .cover { padding: 60px 24px; }
+    .month-overview { grid-template-columns: 1fr 1fr; }
+    .post-row { grid-template-columns: 1fr; }
+    .table-header { display: none; }
+    .ideas-grid { grid-template-columns: 1fr; }
+    .rhythm-block { grid-template-columns: 1fr; }
+    .cover-meta { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Portfolio Asset No. 03 — Content Planning Document</div>
+  <div class="cover-line"></div>
+  <div class="cover-title">Monthly <em>Content</em><br>Calendar</div>
+  <div class="cover-subtitle">The Girl Mompreneur</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><span>Prepared by</span><span>Ada Pinales</span></div>
+    <div class="cover-meta-item"><span>Brand</span><span>The Girl Mompreneur</span></div>
+    <div class="cover-meta-item"><span>Sample Month</span><span>Month 01</span></div>
+    <div class="cover-meta-item"><span>Frequency</span><span>5–6x per week</span></div>
+  </div>
+</div>
+
+<!-- DOCUMENT BODY -->
+<div class="document">
+
+  <div class="export-note">
+    <strong>Portfolio Document:</strong>&nbsp; Monthly Content Calendar built as a live case study for Ada Pinales — Content Systems &amp; AI Workflow Specialist for Creators. Developed using Claude, ChatGPT, and Canva.
+  </div>
+
+  <!-- MONTH OVERVIEW -->
+  <div class="section">
+    <div class="section-label">01 — Month at a Glance</div>
+    <div class="section-title">Monthly <em>Overview</em></div>
+    <div class="section-body">
+      A structured 4-week content plan for The Girl Mompreneur — rotating evenly across all three brand pillars at a 5–6x weekly posting cadence across Reels and Carousels.
+    </div>
+
+    <div class="month-overview">
+      <div>
+        <div class="month-stat-label">Total Posts</div>
+        <div class="month-stat-value">22</div>
+        <div class="month-stat-sub">Across 4 weeks</div>
+      </div>
+      <div>
+        <div class="month-stat-label">Formats</div>
+        <div class="month-stat-value">Reel + Carousel</div>
+        <div class="month-stat-sub">Primary formats</div>
+      </div>
+      <div>
+        <div class="month-stat-label">Pillars</div>
+        <div class="month-stat-value">All Three</div>
+        <div class="month-stat-sub">Rotating evenly</div>
+      </div>
+      <div>
+        <div class="month-stat-label">Rest Days</div>
+        <div class="month-stat-value">Sun + 1 flex</div>
+        <div class="month-stat-sub">Per week</div>
+      </div>
+    </div>
+
+    <div class="pillar-key">
+      <div class="pillar-key-item">
+        <div class="pillar-dot" style="background: var(--pillar-1);"></div>
+        <div class="pillar-key-label">Pillar 1 — Identity Before Income</div>
+      </div>
+      <div class="pillar-key-item">
+        <div class="pillar-dot" style="background: var(--pillar-2);"></div>
+        <div class="pillar-key-label">Pillar 2 — Moving Differently</div>
+      </div>
+      <div class="pillar-key-item">
+        <div class="pillar-dot" style="background: var(--pillar-3);"></div>
+        <div class="pillar-key-label">Pillar 3 — Awareness Before Action</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 1 -->
+  <div class="section">
+    <div class="section-label">02 — Week One</div>
+    <div class="section-title">Week 1 — <em>The Foundation</em></div>
+    <div class="section-body">Theme: Establish who GMP is and what this brand stands for. Open the month with identity content that earns new followers and re-anchors existing ones.</div>
+
+    <div class="table-header">
+      <div class="table-header-cell">Day</div>
+      <div class="table-header-cell">Format</div>
+      <div class="table-header-cell">Pillar</div>
+      <div class="table-header-cell">Topic</div>
+      <div class="table-header-cell">Opening Hook</div>
+    </div>
+
+    <div class="week-posts">
+      <div class="post-row">
+        <div class="post-cell day">Mon</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-1)"></div><span class="pillar-text">P1</span></div>
+        <div class="post-cell topic">Why the strategy keeps failing — it's not the strategy</div>
+        <div class="post-cell hook">"The reason your plan isn't working has nothing to do with the plan."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Tue</div>
+        <div class="post-cell format"><span class="format-badge format-carousel">Carousel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-3)"></div><span class="pillar-text">P3</span></div>
+        <div class="post-cell topic">5 signs you're building on the wrong foundation</div>
+        <div class="post-cell hook">"You're not stuck because you're lazy. You're stuck because the foundation isn't there yet."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Wed</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-2)"></div><span class="pillar-text">P2</span></div>
+        <div class="post-cell topic">What moving differently actually looks like as a mom</div>
+        <div class="post-cell hook">"She's not more disciplined than you. She just made a different decision about who she is."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Thu</div>
+        <div class="post-cell format"><span class="format-badge format-carousel">Carousel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-1)"></div><span class="pillar-text">P1</span></div>
+        <div class="post-cell topic">The identity shift that has to happen before income</div>
+        <div class="post-cell hook">"Most women are trying to build the life before becoming the woman who can hold it."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Fri</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-3)"></div><span class="pillar-text">P3</span></div>
+        <div class="post-cell topic">The pattern nobody talks about — why motivated women keep starting over</div>
+        <div class="post-cell hook">"Starting over isn't a discipline problem. It's an identity problem."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Sat</div>
+        <div class="post-cell format"><span class="format-badge format-carousel">Carousel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-2)"></div><span class="pillar-text">P2</span></div>
+        <div class="post-cell topic">What intentional really means when life is full</div>
+        <div class="post-cell hook">"Intentional doesn't mean perfect. It means you stopped letting your emotions make the schedule."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="section">
+    <div class="section-label">03 — Week Two</div>
+    <div class="section-title">Week 2 — <em>The Shift</em></div>
+    <div class="section-body">Theme: Go deeper into patterns and behaviors. This week creates the "I didn't realize that about myself" moments that build trust and drive saves and shares.</div>
+
+    <div class="table-header">
+      <div class="table-header-cell">Day</div>
+      <div class="table-header-cell">Format</div>
+      <div class="table-header-cell">Pillar</div>
+      <div class="table-header-cell">Topic</div>
+      <div class="table-header-cell">Opening Hook</div>
+    </div>
+
+    <div class="week-posts">
+      <div class="post-row">
+        <div class="post-cell day">Mon</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-3)"></div><span class="pillar-text">P3</span></div>
+        <div class="post-cell topic">Why awareness has to come before action — always</div>
+        <div class="post-cell hook">"Acting before you're aware is just repeating the pattern faster."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Tue</div>
+        <div class="post-cell format"><span class="format-badge format-carousel">Carousel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-1)"></div><span class="pillar-text">P1</span></div>
+        <div class="post-cell topic">What self-concept has to do with your income ceiling</div>
+        <div class="post-cell hook">"Your income ceiling isn't set by your strategy. It's set by your self-concept."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Wed</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-2)"></div><span class="pillar-text">P2</span></div>
+        <div class="post-cell topic">The discipline nobody glamorizes — doing it when nothing feels good</div>
+        <div class="post-cell hook">"Discipline isn't what you do when you're motivated. It's what you do when you're not."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Thu</div>
+        <div class="post-cell format"><span class="format-badge format-carousel">Carousel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-3)"></div><span class="pillar-text">P3</span></div>
+        <div class="post-cell topic">4 blind spots that keep women building in circles</div>
+        <div class="post-cell hook">"She keeps getting close — then pulling back. That's not fear of failure. That's fear of becoming."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Sat</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-1)"></div><span class="pillar-text">P1</span></div>
+        <div class="post-cell topic">Becoming before building — what that actually requires</div>
+        <div class="post-cell hook">"You can't build a version of your life your identity hasn't caught up to yet."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="section">
+    <div class="section-label">04 — Week Three</div>
+    <div class="section-title">Week 3 — <em>The Work</em></div>
+    <div class="section-body">Theme: Practical and behavioral. This week bridges identity content to real daily life — motherhood, decisions, consistency, and what the work actually looks like from the inside.</div>
+
+    <div class="table-header">
+      <div class="table-header-cell">Day</div>
+      <div class="table-header-cell">Format</div>
+      <div class="table-header-cell">Pillar</div>
+      <div class="table-header-cell">Topic</div>
+      <div class="table-header-cell">Opening Hook</div>
+    </div>
+
+    <div class="week-posts">
+      <div class="post-row">
+        <div class="post-cell day">Mon</div>
+        <div class="post-cell format"><span class="format-badge format-carousel">Carousel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-2)"></div><span class="pillar-text">P2</span></div>
+        <div class="post-cell topic">How to move with intention when life as a mom is unpredictable</div>
+        <div class="post-cell hook">"Structure doesn't mean rigid. It means you have a default when everything falls apart."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Tue</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-3)"></div><span class="pillar-text">P3</span></div>
+        <div class="post-cell topic">What you're really doing when you stay busy but stay stuck</div>
+        <div class="post-cell hook">"Busy is not the same as building. And somewhere you already know that."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Wed</div>
+        <div class="post-cell format"><span class="format-badge format-carousel">Carousel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-1)"></div><span class="pillar-text">P1</span></div>
+        <div class="post-cell topic">The version of you that will actually follow through — what she looks like</div>
+        <div class="post-cell hook">"Stop asking what your next move is. Start asking who you need to be to make it."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Thu</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-2)"></div><span class="pillar-text">P2</span></div>
+        <div class="post-cell topic">Emotional regulation as a business strategy — not self-help fluff</div>
+        <div class="post-cell hook">"The most important skill in building anything isn't strategy. It's learning to not let your emotions run the business."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Fri</div>
+        <div class="post-cell format"><span class="format-badge format-carousel">Carousel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-3)"></div><span class="pillar-text">P3</span></div>
+        <div class="post-cell topic">3 questions to ask before your next move — not after</div>
+        <div class="post-cell hook">"Awareness isn't soft. It's the thing that separates the women who build something lasting from the ones who stay in the cycle."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Sat</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-1)"></div><span class="pillar-text">P1</span></div>
+        <div class="post-cell topic">What I had to unlearn before I could actually build</div>
+        <div class="post-cell hook">"Before the income came the identity work. And nobody talks about how uncomfortable that part is."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div class="section">
+    <div class="section-label">05 — Week Four</div>
+    <div class="section-title">Week 4 — <em>The Becoming</em></div>
+    <div class="section-body">Theme: Close the month with forward momentum. Content that consolidates the month's message and activates the audience toward identity-level decisions — not just actions.</div>
+
+    <div class="table-header">
+      <div class="table-header-cell">Day</div>
+      <div class="table-header-cell">Format</div>
+      <div class="table-header-cell">Pillar</div>
+      <div class="table-header-cell">Topic</div>
+      <div class="table-header-cell">Opening Hook</div>
+    </div>
+
+    <div class="week-posts">
+      <div class="post-row">
+        <div class="post-cell day">Mon</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-2)"></div><span class="pillar-text">P2</span></div>
+        <div class="post-cell topic">The decision that changes everything — and it's not the one you think</div>
+        <div class="post-cell hook">"The most powerful decision you'll make isn't about the business. It's about who you're deciding to be."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Tue</div>
+        <div class="post-cell format"><span class="format-badge format-carousel">Carousel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-1)"></div><span class="pillar-text">P1</span></div>
+        <div class="post-cell topic">What the woman who has what you want actually did differently</div>
+        <div class="post-cell hook">"She didn't find a better strategy. She became someone who didn't need permission to start."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Wed</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-3)"></div><span class="pillar-text">P3</span></div>
+        <div class="post-cell topic">What this month should have shown you about yourself</div>
+        <div class="post-cell hook">"The month isn't over. But wherever you are right now is telling you something — are you listening?"</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Thu</div>
+        <div class="post-cell format"><span class="format-badge format-carousel">Carousel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-2)"></div><span class="pillar-text">P2</span></div>
+        <div class="post-cell topic">How to end the month differently than you started it</div>
+        <div class="post-cell hook">"Don't wait for January. Don't wait for Monday. The shift starts in the next decision you make."</div>
+      </div>
+      <div class="post-row">
+        <div class="post-cell day">Sat</div>
+        <div class="post-cell format"><span class="format-badge format-reel">Reel</span></div>
+        <div class="post-cell pillar"><div class="pillar-indicator" style="background:var(--pillar-1)"></div><span class="pillar-text">P1</span></div>
+        <div class="post-cell topic">Who you're becoming — a closing message for the month</div>
+        <div class="post-cell hook">"You're not building a brand. You're becoming the woman the brand needs you to be first."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BONUS CONTENT BANK -->
+  <div class="section">
+    <div class="section-label">06 — Content Bank</div>
+    <div class="section-title">Overflow <em>Ideas</em></div>
+    <div class="section-body">Additional content ideas mapped by pillar — use for flex days, evergreen backfill, or next month's planning.</div>
+
+    <div class="ideas-grid">
+      <div class="idea-cell">
+        <div class="idea-pillar-label" style="color: var(--pillar-1);">
+          <div class="pillar-dot" style="background: var(--pillar-1); width:8px; height:8px; border-radius:50%;"></div>
+          Identity Before Income
+        </div>
+        <ul class="idea-list">
+          <li>The version of you that already has it — what does she believe?</li>
+          <li>Why you keep shrinking before the breakthrough</li>
+          <li>What the inner work actually asks of you</li>
+          <li>The story you're still telling yourself about why it's not possible</li>
+          <li>Identity vs. role — which one is driving your decisions?</li>
+        </ul>
+      </div>
+      <div class="idea-cell">
+        <div class="idea-pillar-label" style="color: var(--pillar-2);">
+          <div class="pillar-dot" style="background: var(--pillar-2); width:8px; height:8px; border-radius:50%;"></div>
+          Moving Differently
+        </div>
+        <ul class="idea-list">
+          <li>What it looks like to build with kids in the room</li>
+          <li>The morning that changed how I move every day</li>
+          <li>How I make decisions now vs. how I used to</li>
+          <li>The non-negotiables that protect your momentum</li>
+          <li>What consistency looks like when motivation is gone</li>
+        </ul>
+      </div>
+      <div class="idea-cell">
+        <div class="idea-pillar-label" style="color: var(--pillar-3);">
+          <div class="pillar-dot" style="background: var(--pillar-3); width:8px; height:8px; border-radius:50%;"></div>
+          Awareness Before Action
+        </div>
+        <ul class="idea-list">
+          <li>The real reason you're not posting consistently</li>
+          <li>What procrastination is actually protecting you from</li>
+          <li>The comparison trap — what it's really telling you</li>
+          <li>Why you keep choosing comfort over growth</li>
+          <li>What changes when you finally see the pattern clearly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- POSTING RHYTHM GUIDE -->
+  <div class="section">
+    <div class="section-label">07 — Rhythm Guide</div>
+    <div class="section-title">Posting <em>Rhythm</em> Notes</div>
+
+    <div class="rhythm-block">
+      <div>
+        <div class="rhythm-title">How to Use This Calendar</div>
+        <ul class="rhythm-list">
+          <li>Sunday is always a rest day — do not post</li>
+          <li>Monday opens every week with a Reel — highest reach day</li>
+          <li>Alternate Reel and Carousel through the week</li>
+          <li>Thursday and Friday are high-engagement days — use stronger hooks</li>
+          <li>Saturday content can be slightly more personal or story-driven</li>
+          <li>No more than two consecutive posts from the same pillar</li>
+        </ul>
+      </div>
+      <div>
+        <div class="rhythm-title">Repurposing Notes</div>
+        <ul class="rhythm-list">
+          <li>Every Reel script can become a Carousel on the same topic</li>
+          <li>Every Carousel can become a caption-only static post</li>
+          <li>Strong hooks from Reels become standalone caption openers</li>
+          <li>Week 1 Reels can be reposted as TikToks with no edits</li>
+          <li>Content bank ideas are pre-built for next month's planning</li>
+          <li>Save high-performing hooks — they become your testing baseline</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="doc-footer-brand">The Girl Mompreneur</div>
+    <div class="doc-footer-meta">
+      Prepared by Ada Pinales<br>
+      Content Systems &amp; AI Workflow Specialist for Creators<br>
+      @iamAdaPinales
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

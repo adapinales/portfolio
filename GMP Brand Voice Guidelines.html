@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Girl Mompreneur — Brand Voice Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFFFFF;
+    --warm-white: #FAFAFA;
+    --ink: #1C1917;
+    --ink-light: #44403C;
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --terracotta: #C4623A;
+    --sage: #6B7C6E;
+    --border: #E8E0D4;
+    --section-gap: 72px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: #2C1810;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 10%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -80px;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,134,11,0.15) 0%, transparent 70%);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 8%;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,98,58,0.1) 0%, transparent 70%);
+  }
+
+  .cover-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 32px;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 48px;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: #FDFAF6;
+    margin-bottom: 8px;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(253,250,246,0.5);
+    margin-bottom: 56px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cover-meta-item span:first-child {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(253,250,246,0.35);
+  }
+
+  .cover-meta-item span:last-child {
+    font-size: 14px;
+    color: rgba(253,250,246,0.75);
+  }
+
+  /* DOCUMENT */
+  .document {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+
+  .export-note {
+    background: #F5F5F5;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 16px 24px;
+    margin-bottom: 48px;
+    font-size: 12px;
+    color: var(--ink-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .export-note strong { color: var(--ink); }
+
+  .section {
+    margin-bottom: var(--section-gap);
+    animation: fadeUp 0.6s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-light);
+    max-width: 680px;
+    margin-bottom: 32px;
+  }
+
+  /* VOICE IDENTITY BLOCK */
+  .voice-identity {
+    background: #2C1810;
+    padding: 48px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+
+  .voice-identity::before {
+    content: '\2669';
+    font-size: 220px;
+    color: rgba(255,255,255,0.03);
+    position: absolute;
+    top: -20px;
+    right: 24px;
+    line-height: 1;
+  }
+
+  .voice-identity-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .voice-identity-statement {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.8vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    color: #FDFAF6;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+  }
+
+  .voice-blend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .voice-blend-item-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(253,250,246,0.55);
+    margin-bottom: 8px;
+  }
+
+  .voice-blend-item-value {
+    font-size: 14px;
+    color: rgba(253,250,246,0.85);
+    line-height: 1.65;
+  }
+
+  /* AUDIENCE STATE */
+  .audience-block {
+    background: var(--warm-white);
+    border-left: 3px solid var(--gold);
+    padding: 32px 36px;
+    margin-top: 32px;
+  }
+
+  .audience-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .audience-statement {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .audience-body {
+    font-size: 14.5px;
+    color: var(--ink-light);
+    line-height: 1.75;
+    max-width: 600px;
+  }
+
+  /* TONE SPECTRUM */
+  .tone-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-top: 32px;
+  }
+
+  .tone-cell {
+    background: var(--warm-white);
+    padding: 28px 24px;
+  }
+
+  .tone-cell-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .tone-cell-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .tone-cell-body {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.65;
+  }
+
+  /* FORMAT GUIDE */
+  .format-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 32px;
+  }
+
+  .format-row {
+    background: var(--warm-white);
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 160px 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .format-type {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    padding-top: 2px;
+  }
+
+  .format-col-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .format-col-body {
+    font-size: 13.5px;
+    color: var(--ink-light);
+    line-height: 1.65;
+  }
+
+  /* WORD BANK */
+  .wordbank-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-top: 32px;
+  }
+
+  .wordbank-cell {
+    background: var(--warm-white);
+    padding: 28px 32px;
+  }
+
+  .wordbank-cell-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .wordbank-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 5px 14px;
+    border-radius: 100px;
+    color: var(--ink-light);
+  }
+
+  .tag-use {
+    border: 1px solid var(--gold);
+    background: rgba(184,134,11,0.06);
+  }
+
+  .tag-avoid {
+    border: 1px solid var(--border);
+    background: var(--cream);
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  /* BEFORE / AFTER */
+  .before-after {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 32px;
+  }
+
+  .ba-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+  }
+
+  .ba-cell {
+    padding: 24px 28px;
+  }
+
+  .ba-cell.before { background: #FDF8F6; }
+  .ba-cell.after { background: var(--warm-white); }
+
+  .ba-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .ba-label.before-label { color: var(--terracotta); }
+  .ba-label.after-label { color: var(--sage); }
+
+  .ba-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  .ba-text.before { opacity: 0.6; }
+
+  /* CONTENT FORMULA */
+  .formula-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 32px;
+  }
+
+  .formula-step {
+    background: var(--warm-white);
+    padding: 28px 36px;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .step-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .step-body {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  .step-example {
+    margin-top: 10px;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--sage);
+    padding-left: 12px;
+    border-left: 2px solid var(--border);
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .doc-footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .doc-footer-meta {
+    font-size: 11px;
+    color: var(--sage);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 640px) {
+    .document { padding: 48px 24px; }
+    .cover { padding: 60px 24px; }
+    .voice-blend { grid-template-columns: 1fr; }
+    .tone-grid { grid-template-columns: 1fr; }
+    .format-row { grid-template-columns: 1fr; }
+    .wordbank-grid { grid-template-columns: 1fr; }
+    .ba-row { grid-template-columns: 1fr; }
+    .cover-meta { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Portfolio Asset No. 02 — Brand Voice Document</div>
+  <div class="cover-line"></div>
+  <div class="cover-title">Brand <em>Voice</em><br>Guidelines</div>
+  <div class="cover-subtitle">The Girl Mompreneur</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span>Prepared by</span>
+      <span>Ada Pinales</span>
+    </div>
+    <div class="cover-meta-item">
+      <span>Brand</span>
+      <span>The Girl Mompreneur</span>
+    </div>
+    <div class="cover-meta-item">
+      <span>Handle</span>
+      <span>@iamAdaPinales</span>
+    </div>
+    <div class="cover-meta-item">
+      <span>Version</span>
+      <span>1.0 — 2025</span>
+    </div>
+  </div>
+</div>
+
+<!-- DOCUMENT BODY -->
+<div class="document">
+
+  <div class="export-note">
+    <strong>Portfolio Document:</strong>&nbsp; Brand Voice Guidelines built as a live case study for Ada Pinales — Content Systems &amp; AI Workflow Specialist for Creators. Developed using Claude, ChatGPT, and Canva.
+  </div>
+
+  <!-- VOICE IDENTITY -->
+  <div class="section">
+    <div class="section-label">01 — Voice Identity</div>
+    <div class="section-title">The Voice of <em>GMP</em></div>
+    <div class="section-body">
+      Before writing a single caption, every piece of GMP content begins here — with a clear understanding of whose voice is speaking and what that voice carries into the room.
+    </div>
+
+    <div class="voice-identity">
+      <div class="voice-identity-label">Voice Persona</div>
+      <div class="voice-identity-statement">
+        "The woman who has done the work, is still doing the work, and speaks from inside the becoming — not above it."
+      </div>
+      <div class="voice-blend">
+        <div>
+          <div class="voice-blend-item-label">The Warmth Layer — Michelle Obama</div>
+          <div class="voice-blend-item-value">Grounded, encouraging, quietly powerful. She speaks to women as equals. There is no pedestal. There is no performance. Just a woman who believes in what another woman can become — and says so directly.</div>
+        </div>
+        <div>
+          <div class="voice-blend-item-label">The Depth Layer — Erykah Badu</div>
+          <div class="voice-blend-item-value">Deeply self-aware, transformational, unapologetic. She is willing to say the thing no one else is saying. She challenges conventional thinking not to be contrarian — but because she has seen something others haven't yet.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO SHE'S SPEAKING TO -->
+  <div class="section">
+    <div class="section-label">02 — Audience State</div>
+    <div class="section-title">Who She's <em>Speaking To</em></div>
+    <div class="section-body">
+      Every word written under The Girl Mompreneur is written for one specific woman at one specific moment in her life.
+    </div>
+
+    <div class="audience-block">
+      <div class="audience-label">Her Emotional State When She Finds GMP</div>
+      <div class="audience-statement">"She's figuring out who she is becoming — and realizing the life she wants will require a different version of her."</div>
+      <div class="audience-body">
+        She is not lost. She is in transition. She can feel that something needs to shift but hasn't named it yet. She's seen the courses, the blueprints, the reels about passive income — and something still isn't clicking. GMP meets her exactly there, before the strategy, at the identity. The voice speaks to that woman — not the woman she was, and not the finished version either. The woman in the middle of becoming.
+      </div>
+    </div>
+  </div>
+
+  <!-- TONE SPECTRUM -->
+  <div class="section">
+    <div class="section-label">03 — Tone Spectrum</div>
+    <div class="section-title">How the <em>Tone</em> Moves</div>
+    <div class="section-body">
+      GMP's voice is not one flat tone. It moves across a spectrum depending on what the content is doing — but it never loses its core character.
+    </div>
+
+    <div class="tone-grid">
+      <div class="tone-cell">
+        <div class="tone-cell-icon">◦</div>
+        <div class="tone-cell-title">Reflective</div>
+        <div class="tone-cell-body">Used for identity and awareness content. Slower pace. Invites the reader to pause and look inward. Feels like a quiet conversation, not a broadcast.</div>
+      </div>
+      <div class="tone-cell">
+        <div class="tone-cell-icon">◦</div>
+        <div class="tone-cell-title">Direct</div>
+        <div class="tone-cell-body">Used for truth-telling and pattern-naming content. Clear, confident, no filler. Says the thing plainly. Not harsh — but not soft either. The reader feels seen.</div>
+      </div>
+      <div class="tone-cell">
+        <div class="tone-cell-icon">◦</div>
+        <div class="tone-cell-title">Activating</div>
+        <div class="tone-cell-body">Used for discipline and behavior content. Creates forward momentum. Leaves the reader with something to do, decide, or embody. Energizing without being hype.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMAT VOICE GUIDE -->
+  <div class="section">
+    <div class="section-label">04 — Format Voice Guide</div>
+    <div class="section-title">Voice by <em>Format</em></div>
+    <div class="section-body">
+      The voice stays consistent across formats — but how it shows up shifts based on what each format demands.
+    </div>
+
+    <div class="format-grid">
+      <div class="format-row">
+        <div class="format-type">Reels — Voiceover</div>
+        <div>
+          <div class="format-col-label">Tone</div>
+          <div class="format-col-body">Intimate and unhurried. Speaks like she's telling you something she realized on her own — not performing for a camera. Pauses matter. Silence is part of the delivery.</div>
+        </div>
+        <div>
+          <div class="format-col-label">Opening Line Rule</div>
+          <div class="format-col-body">Never start with a question. Start with a statement that lands like a truth the viewer has been feeling but not saying. Hook through recognition, not curiosity.</div>
+        </div>
+      </div>
+      <div class="format-row">
+        <div class="format-type">Talking Head</div>
+        <div>
+          <div class="format-col-label">Tone</div>
+          <div class="format-col-body">Warm and real. Eye contact matters. Speaks to one woman, not a crowd. Personal stories are the entry point — the broader truth comes second.</div>
+        </div>
+        <div>
+          <div class="format-col-label">Opening Line Rule</div>
+          <div class="format-col-body">Start mid-thought or mid-realization. "I used to think..." or "Something shifted for me when..." — drop the viewer into the moment rather than setting it up.</div>
+        </div>
+      </div>
+      <div class="format-row">
+        <div class="format-type">Carousel</div>
+        <div>
+          <div class="format-col-label">Tone</div>
+          <div class="format-col-body">Clear and layered. Each slide builds on the last. No filler slides. The first slide hooks. The last slide activates. Every middle slide earns the next swipe.</div>
+        </div>
+        <div>
+          <div class="format-col-label">Opening Line Rule</div>
+          <div class="format-col-body">The first slide is a single declarative truth. Short. Bold. No explanation yet. The explanation is the reward for swiping.</div>
+        </div>
+      </div>
+      <div class="format-row">
+        <div class="format-type">Caption — Static</div>
+        <div>
+          <div class="format-col-label">Tone</div>
+          <div class="format-col-body">Conversational but intentional. Reads like a note from a friend who also happens to see you clearly. Short paragraphs. White space. Never a wall of text.</div>
+        </div>
+        <div>
+          <div class="format-col-label">Opening Line Rule</div>
+          <div class="format-col-body">The first line must work without the rest. If someone only reads one line, it should still land. Lead with the truth — context comes after.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORD BANK -->
+  <div class="section">
+    <div class="section-label">05 — Language Guide</div>
+    <div class="section-title">Words That <em>Fit</em> and Words That Don't</div>
+    <div class="section-body">
+      Language is the fingerprint of a brand voice. These are the words and phrases that belong to GMP — and the ones that break the brand the moment they appear.
+    </div>
+
+    <div class="wordbank-grid">
+      <div class="wordbank-cell">
+        <div class="wordbank-cell-title">Use This Language</div>
+        <div class="wordbank-tags">
+          <span class="tag tag-use">becoming</span>
+          <span class="tag tag-use">intentional</span>
+          <span class="tag tag-use">foundation</span>
+          <span class="tag tag-use">identity</span>
+          <span class="tag tag-use">move differently</span>
+          <span class="tag tag-use">self-concept</span>
+          <span class="tag tag-use">real life</span>
+          <span class="tag tag-use">the work</span>
+          <span class="tag tag-use">discipline</span>
+          <span class="tag tag-use">shift</span>
+          <span class="tag tag-use">aware</span>
+          <span class="tag tag-use">build something real</span>
+          <span class="tag tag-use">she already knows</span>
+          <span class="tag tag-use">pattern</span>
+          <span class="tag tag-use">version of herself</span>
+          <span class="tag tag-use">grounded</span>
+          <span class="tag tag-use">on purpose</span>
+          <span class="tag tag-use">before the strategy</span>
+        </div>
+      </div>
+      <div class="wordbank-cell">
+        <div class="wordbank-cell-title">Never Use This Language</div>
+        <div class="wordbank-tags">
+          <span class="tag tag-avoid">girl boss</span>
+          <span class="tag tag-avoid">hustle harder</span>
+          <span class="tag tag-avoid">manifest it</span>
+          <span class="tag tag-avoid">queen</span>
+          <span class="tag tag-avoid">passive income</span>
+          <span class="tag tag-avoid">6 figures</span>
+          <span class="tag tag-avoid">just believe</span>
+          <span class="tag tag-avoid">it's that simple</span>
+          <span class="tag tag-avoid">limited spots</span>
+          <span class="tag tag-avoid">you're so close</span>
+          <span class="tag tag-avoid">dream life</span>
+          <span class="tag tag-avoid">boss babe</span>
+          <span class="tag tag-avoid">level up</span>
+          <span class="tag tag-avoid">grind season</span>
+          <span class="tag tag-avoid">watch me win</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEFORE / AFTER -->
+  <div class="section">
+    <div class="section-label">06 — Voice in Practice</div>
+    <div class="section-title">Off-Brand vs. <em>On-Brand</em></div>
+    <div class="section-body">
+      The fastest way to understand a brand voice is to see it in contrast. These examples show the same idea — written wrong, then written right.
+    </div>
+
+    <div class="before-after">
+      <div class="ba-row">
+        <div class="ba-cell before">
+          <div class="ba-label before-label">Off-Brand</div>
+          <div class="ba-text before">"Hustle harder, queen! Your dream life is waiting and you just have to believe in yourself to get there."</div>
+        </div>
+        <div class="ba-cell after">
+          <div class="ba-label after-label">On-Brand</div>
+          <div class="ba-text">"The life you want isn't waiting for more effort. It's waiting for a different version of you — and that's a harder truth to sit with."</div>
+        </div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-cell before">
+          <div class="ba-label before-label">Off-Brand</div>
+          <div class="ba-text before">"I went from broke to 6 figures and so can you! Here are the 5 steps I used to manifest my success."</div>
+        </div>
+        <div class="ba-cell after">
+          <div class="ba-label after-label">On-Brand</div>
+          <div class="ba-text">"The strategy was never the problem. I had the steps. What I didn't have yet was the identity to actually follow through on them."</div>
+        </div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-cell before">
+          <div class="ba-label before-label">Off-Brand</div>
+          <div class="ba-text before">"Limited spots! Join my program now before it's too late — this is your sign to finally level up!"</div>
+        </div>
+        <div class="ba-cell after">
+          <div class="ba-label after-label">On-Brand</div>
+          <div class="ba-text">"This isn't for everyone. It's for the woman who already knows something needs to change — and is done waiting to feel ready before she moves."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT FORMULA -->
+  <div class="section">
+    <div class="section-label">07 — Content Formula</div>
+    <div class="section-title">The GMP <em>Framework</em></div>
+    <div class="section-body">
+      Every piece of content — regardless of format — follows this four-part structure. It is not a rigid template. It is a directional flow that ensures content moves from awareness to action.
+    </div>
+
+    <div class="formula-steps">
+      <div class="formula-step">
+        <div class="step-number">01</div>
+        <div>
+          <div class="step-title">Realization</div>
+          <div class="step-body">Name the thing most people haven't said out loud yet. This is the hook — not a question, not a tease, but a truth that creates instant recognition. The reader should feel it before she thinks it.</div>
+          <div class="step-example">Example: "Most women aren't stuck because they don't know enough. They're stuck because they haven't seen themselves clearly yet."</div>
+        </div>
+      </div>
+      <div class="formula-step">
+        <div class="step-number">02</div>
+        <div>
+          <div class="step-title">Explanation</div>
+          <div class="step-body">Break down why the realization is true. This is where trust is built. Be specific. Use real patterns, real behavior, real language — not abstract concepts. She should be nodding, not thinking.</div>
+          <div class="step-example">Example: "She has the courses. She has the plan. But every time she gets close, she self-sabotages — because the strategy is asking her to show up as a version of herself she hasn't become yet."</div>
+        </div>
+      </div>
+      <div class="formula-step">
+        <div class="step-number">03</div>
+        <div>
+          <div class="step-title">Embodiment</div>
+          <div class="step-body">Show what it looks like when someone actually lives this. A real example, a personal story, or a clear contrast between the old behavior and the new one. This makes the idea tangible, not theoretical.</div>
+          <div class="step-example">Example: "When I stopped trying to execute the plan and started asking who I needed to become to hold it — everything changed. Not the strategy. Me."</div>
+        </div>
+      </div>
+      <div class="formula-step">
+        <div class="step-number">04</div>
+        <div>
+          <div class="step-title">Activation</div>
+          <div class="step-body">Leave her with one thing — a question to sit with, a decision to make, or a small action to take. Never a list of five things. One thing. The goal is a shift, not a to-do list.</div>
+          <div class="step-example">Example: "The question isn't what's your next step. It's — who do you need to become before that step actually sticks?"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="doc-footer-brand">The Girl Mompreneur</div>
+    <div class="doc-footer-meta">
+      Prepared by Ada Pinales<br>
+      Content Systems &amp; AI Workflow Specialist for Creators<br>
+      @iamAdaPinales
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

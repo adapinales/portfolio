@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Girl Mompreneur — AI-Assisted Repurposing Workflow</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFFFFF;
+    --warm-white: #FAFAFA;
+    --ink: #1C1917;
+    --ink-light: #44403C;
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --terracotta: #C4623A;
+    --sage: #6B7C6E;
+    --border: #E8E0D4;
+    --section-gap: 72px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: #1A2420;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 10%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -80px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(107,124,110,0.18) 0%, transparent 70%);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 5%;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,134,11,0.1) 0%, transparent 70%);
+  }
+
+  .cover-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 32px;
+  }
+
+  .cover-line { width: 60px; height: 1px; background: var(--gold); margin-bottom: 48px; }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6.5vw, 84px);
+    font-weight: 300; line-height: 1.05;
+    color: #FDFAF6; margin-bottom: 8px;
+  }
+
+  .cover-title em { font-style: italic; color: var(--gold-light); }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 300; font-style: italic;
+    color: rgba(253,250,246,0.45); margin-bottom: 56px;
+  }
+
+  .cover-meta { display: flex; gap: 48px; flex-wrap: wrap; }
+  .cover-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .cover-meta-item span:first-child {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(253,250,246,0.35);
+  }
+  .cover-meta-item span:last-child { font-size: 14px; color: rgba(253,250,246,0.75); }
+
+  /* DOCUMENT */
+  .document { max-width: 900px; margin: 0 auto; padding: 80px 48px; }
+
+  .export-note {
+    background: #F5F5F5; border: 1px solid var(--border);
+    border-radius: 2px; padding: 16px 24px; margin-bottom: 48px;
+    font-size: 12px; color: var(--ink-light);
+  }
+  .export-note strong { color: var(--ink); }
+
+  .section { margin-bottom: var(--section-gap); animation: fadeUp 0.6s ease both; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-label {
+    font-size: 10px; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--terracotta);
+    font-weight: 500; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 400; line-height: 1.2;
+    color: var(--ink); margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-body {
+    font-size: 15px; line-height: 1.8;
+    color: var(--ink-light); max-width: 680px; margin-bottom: 32px;
+  }
+
+  /* WORKFLOW OVERVIEW */
+  .workflow-overview {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 32px;
+    overflow-x: auto;
+  }
+
+  .flow-step {
+    flex: 1;
+    min-width: 120px;
+    background: var(--warm-white);
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    border-right: 1px solid var(--border);
+  }
+
+  .flow-step:last-child { border-right: none; }
+
+  .flow-step::after {
+    content: '→';
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--border);
+    z-index: 2;
+    background: var(--cream);
+    padding: 2px 4px;
+  }
+
+  .flow-step:last-child::after { display: none; }
+
+  .flow-step-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300;
+    color: var(--border); line-height: 1; margin-bottom: 10px;
+  }
+
+  .flow-step-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-weight: 600;
+    color: var(--ink); margin-bottom: 6px; line-height: 1.3;
+  }
+
+  .flow-step-tool {
+    font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--sage);
+    font-weight: 500;
+  }
+
+  /* STAGE CARDS */
+  .stage-card {
+    margin-top: 4px;
+    background: var(--warm-white);
+    border-left: 3px solid var(--border);
+    padding: 36px 40px;
+    position: relative;
+  }
+
+  .stage-card.stage-1 { border-left-color: var(--sage); }
+  .stage-card.stage-2 { border-left-color: var(--gold); }
+  .stage-card.stage-3 { border-left-color: var(--terracotta); }
+  .stage-card.stage-4 { border-left-color: var(--gold); }
+  .stage-card.stage-5 { border-left-color: var(--sage); }
+  .stage-card.stage-6 { border-left-color: var(--terracotta); }
+
+  .stage-header {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 24px;
+    margin-bottom: 24px; flex-wrap: wrap;
+  }
+
+  .stage-title-block {}
+
+  .stage-number {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--sage);
+    font-weight: 500; margin-bottom: 6px;
+  }
+
+  .stage-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 600; color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .stage-tool-badge {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--ink); padding: 8px 16px;
+    border-radius: 2px; flex-shrink: 0;
+  }
+
+  .stage-tool-badge span {
+    font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  .stage-description {
+    font-size: 14.5px; color: var(--ink-light);
+    line-height: 1.75; margin-bottom: 24px;
+    max-width: 640px;
+  }
+
+  .stage-prompt-block {
+    background: var(--ink); padding: 28px 32px;
+    border-radius: 2px; margin-bottom: 20px;
+  }
+
+  .stage-prompt-label {
+    font-size: 9px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold-light);
+    font-weight: 500; margin-bottom: 12px;
+  }
+
+  .stage-prompt-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; color: rgba(253,250,246,0.85);
+    line-height: 1.7; font-style: italic;
+  }
+
+  .stage-output-label {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--terracotta);
+    font-weight: 500; margin-bottom: 10px;
+  }
+
+  .stage-output-list {
+    list-style: none; display: flex;
+    flex-direction: column; gap: 8px;
+  }
+
+  .stage-output-list li {
+    font-size: 13.5px; color: var(--ink-light);
+    padding-left: 18px; position: relative; line-height: 1.5;
+  }
+
+  .stage-output-list li::before {
+    content: '✓'; position: absolute; left: 0;
+    color: var(--sage); font-size: 11px;
+  }
+
+  /* LIVE EXAMPLE */
+  .example-flow {
+    display: flex; flex-direction: column;
+    gap: 2px; margin-top: 32px;
+  }
+
+  .example-stage {
+    background: var(--warm-white);
+    padding: 24px 32px;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px; align-items: start;
+  }
+
+  .example-stage-label {
+    font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; font-weight: 500;
+    color: var(--sage); padding-top: 3px;
+  }
+
+  .example-stage-content {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-style: italic;
+    color: var(--ink); line-height: 1.6;
+  }
+
+  .example-stage-content.plain {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal; font-size: 14px;
+    color: var(--ink-light);
+  }
+
+  /* TIME + TOOLS SUMMARY */
+  .summary-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px; background: var(--border); margin-top: 32px;
+  }
+
+  .summary-cell {
+    background: var(--warm-white); padding: 28px 32px;
+  }
+
+  .summary-cell-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; color: var(--gold);
+    margin-bottom: 12px; line-height: 1;
+  }
+
+  .summary-cell-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 600;
+    color: var(--ink); margin-bottom: 8px;
+  }
+
+  .summary-cell-body {
+    font-size: 13.5px; color: var(--ink-light); line-height: 1.65;
+  }
+
+  /* REPLICATION NOTES */
+  .replication-block {
+    background: #1A2420; padding: 44px 48px;
+    border-radius: 2px; margin-top: 32px;
+  }
+
+  .replication-label {
+    font-size: 10px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold-light);
+    font-weight: 500; margin-bottom: 20px;
+  }
+
+  .replication-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300; font-style: italic;
+    color: #FDFAF6; line-height: 1.4; margin-bottom: 28px;
+    max-width: 600px;
+  }
+
+  .replication-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  }
+
+  .replication-item-label {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(253,250,246,0.45);
+    margin-bottom: 8px;
+  }
+
+  .replication-item-value {
+    font-size: 13.5px; color: rgba(253,250,246,0.8);
+    line-height: 1.65;
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    border-top: 1px solid var(--border); padding-top: 40px;
+    margin-top: 80px; display: flex;
+    justify-content: space-between; align-items: flex-end;
+    flex-wrap: wrap; gap: 16px;
+  }
+
+  .doc-footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; color: var(--ink);
+  }
+
+  .doc-footer-meta { font-size: 11px; color: var(--sage); text-align: right; line-height: 1.8; }
+
+  @media (max-width: 680px) {
+    .document { padding: 48px 20px; }
+    .cover { padding: 60px 24px; }
+    .workflow-overview { flex-direction: column; }
+    .flow-step::after { display: none; }
+    .example-stage { grid-template-columns: 1fr; gap: 8px; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .replication-grid { grid-template-columns: 1fr; }
+    .stage-header { flex-direction: column; }
+    .cover-meta { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Portfolio Asset No. 04 — Workflow Document</div>
+  <div class="cover-line"></div>
+  <div class="cover-title"><em>AI-Assisted</em><br>Repurposing<br>Workflow</div>
+  <div class="cover-subtitle">The Girl Mompreneur</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><span>Prepared by</span><span>Ada Pinales</span></div>
+    <div class="cover-meta-item"><span>Brand</span><span>The Girl Mompreneur</span></div>
+    <div class="cover-meta-item"><span>Tools</span><span>Claude · ChatGPT · Canva</span></div>
+    <div class="cover-meta-item"><span>Output</span><span>1 insight → 6 assets</span></div>
+  </div>
+</div>
+
+<!-- DOCUMENT BODY -->
+<div class="document">
+
+  <div class="export-note">
+    <strong>Portfolio Document:</strong>&nbsp; AI-Assisted Repurposing Workflow built as a live case study for Ada Pinales — Content Systems &amp; AI Workflow Specialist for Creators. Developed and executed using Claude, ChatGPT, and Canva.
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section">
+    <div class="section-label">01 — Workflow Overview</div>
+    <div class="section-title">One Insight.<br><em>Six Assets.</em></div>
+    <div class="section-body">
+      This workflow transforms a single original insight — a realization, a truth, a moment of clarity — into a full suite of platform-ready content using a repeatable AI-assisted process. It was built for The Girl Mompreneur and is designed to be replicated for any creator with a clear brand voice and consistent content pillars.
+    </div>
+
+    <div class="workflow-overview">
+      <div class="flow-step">
+        <div class="flow-step-number">01</div>
+        <div class="flow-step-name">Insight & Hook</div>
+        <div class="flow-step-tool">Claude</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-number">02</div>
+        <div class="flow-step-name">Reel Script</div>
+        <div class="flow-step-tool">ChatGPT</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-number">03</div>
+        <div class="flow-step-name">Caption</div>
+        <div class="flow-step-tool">ChatGPT</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-number">04</div>
+        <div class="flow-step-name">Carousel</div>
+        <div class="flow-step-tool">Claude · Canva</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-number">05</div>
+        <div class="flow-step-name">Email / Community</div>
+        <div class="flow-step-tool">ChatGPT</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-number">06</div>
+        <div class="flow-step-name">Offer Content</div>
+        <div class="flow-step-tool">Claude</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAGE 1 -->
+  <div class="section">
+    <div class="section-label">02 — Stage One</div>
+    <div class="section-title">The <em>Insight</em> & Hook</div>
+
+    <div class="stage-card stage-1">
+      <div class="stage-header">
+        <div class="stage-title-block">
+          <div class="stage-number">Stage 01 of 06</div>
+          <div class="stage-name">Capture the Insight — Build the Hook</div>
+        </div>
+        <div class="stage-tool-badge"><span>Tool — Claude · ChatGPT</span></div>
+      </div>
+      <div class="stage-description">
+        Every piece of content in this workflow begins with a raw insight — not a topic, not a title, but a real realization. Something observed, felt, or understood that the audience hasn't heard articulated clearly yet. Claude is used to sharpen that raw insight into a hook that creates instant recognition without giving everything away.
+      </div>
+      <div class="stage-prompt-block">
+        <div class="stage-prompt-label">Claude Prompt Used</div>
+        <div class="stage-prompt-text">
+          "I have this insight: [raw realization in my own words]. My audience is moms in an identity shift — they're figuring out who they're becoming and realizing the life they want requires a different version of them. My brand voice is warm, grounded, direct, and transformational — think Michelle Obama meets Erykah Badu. Write 5 hook variations for this insight. Each hook should land like a truth the reader has been feeling but hasn't said out loud. No questions. No hype. No generic motivation. Start with a statement."
+        </div>
+      </div>
+      <div class="stage-output-label">Output from This Stage</div>
+      <ul class="stage-output-list">
+        <li>5 hook variations to test across formats</li>
+        <li>1 selected hook that anchors the entire content suite</li>
+        <li>Insight sharpened into a single clear truth statement</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- STAGE 2 -->
+  <div class="section">
+    <div class="section-label">03 — Stage Two</div>
+    <div class="section-title">The <em>Reel</em> Script</div>
+
+    <div class="stage-card stage-2">
+      <div class="stage-header">
+        <div class="stage-title-block">
+          <div class="stage-number">Stage 02 of 06</div>
+          <div class="stage-name">Write the Reel Script</div>
+        </div>
+        <div class="stage-tool-badge"><span>Tool — ChatGPT</span></div>
+      </div>
+      <div class="stage-description">
+        Using the selected hook, Claude drafts a Reel voiceover script built around the GMP content formula — Realization, Explanation, Embodiment, Activation. The script is written to sound spoken, not read. Short sentences. Natural pauses. No filler. Under 60 seconds.
+      </div>
+      <div class="stage-prompt-block">
+        <div class="stage-prompt-label">Claude Prompt Used</div>
+        <div class="stage-prompt-text">
+          "Using this hook: [selected hook], write a 45–55 second Reel voiceover script in the GMP brand voice. Follow this structure: Realization (the hook + one sentence to land it), Explanation (2–3 sentences that break down why it's true using specific, real behavior — no abstract concepts), Embodiment (1–2 sentences showing what this looks like lived out — from personal experience or observation), Activation (one closing statement or question that creates a shift, not a to-do). Write it to sound spoken, not read. Short sentences. No filler words. No 'hey guys.' No call to action at the end."
+        </div>
+      </div>
+      <div class="stage-output-label">Output from This Stage</div>
+      <ul class="stage-output-list">
+        <li>Complete Reel voiceover script — ready to record</li>
+        <li>Formatted with natural pause breaks</li>
+        <li>Under 60 seconds when delivered at natural speaking pace</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- STAGE 3 -->
+  <div class="section">
+    <div class="section-label">04 — Stage Three</div>
+    <div class="section-title">The <em>Caption</em></div>
+
+    <div class="stage-card stage-3">
+      <div class="stage-header">
+        <div class="stage-title-block">
+          <div class="stage-number">Stage 03 of 06</div>
+          <div class="stage-name">Write the Caption</div>
+        </div>
+        <div class="stage-tool-badge"><span>Tool — ChatGPT</span></div>
+      </div>
+      <div class="stage-description">
+        The caption is not a transcript of the Reel. It expands the idea in a different direction — adding a layer of personal context, a complementary truth, or a deeper explanation that rewards readers who stop to engage. Claude adapts the insight into caption format while maintaining the GMP voice.
+      </div>
+      <div class="stage-prompt-block">
+        <div class="stage-prompt-label">Claude Prompt Used</div>
+        <div class="stage-prompt-text">
+          "Using the same insight and hook, write an Instagram caption in the GMP brand voice. This is NOT a transcript of the Reel. It should expand the idea from a slightly different angle — adding personal context, a deeper truth, or a specific moment that makes it real. Format: first line is the hook (same or a variation), then 2–3 short paragraphs with a blank line between each, then one closing line that activates without being a hard sell. Conversational. White space. No hashtags in the body. Keep it under 200 words."
+        </div>
+      </div>
+      <div class="stage-output-label">Output from This Stage</div>
+      <ul class="stage-output-list">
+        <li>Full Instagram caption — formatted and ready to post</li>
+        <li>Distinct from the Reel script — adds value, not repetition</li>
+        <li>Under 200 words with intentional white space</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- STAGE 4 -->
+  <div class="section">
+    <div class="section-label">05 — Stage Four</div>
+    <div class="section-title">The <em>Carousel</em></div>
+
+    <div class="stage-card stage-4">
+      <div class="stage-header">
+        <div class="stage-title-block">
+          <div class="stage-number">Stage 04 of 06</div>
+          <div class="stage-name">Build the Carousel</div>
+        </div>
+        <div class="stage-tool-badge"><span>Tool — Claude · Canva</span></div>
+      </div>
+      <div class="stage-description">
+        Claude structures the insight into a slide-by-slide carousel framework and formats the copy for direct use in Canva. Canva is used to design and format the slides using brand colors, typography, and layout — with Claude's output moving directly into the Canva template.
+      </div>
+      <div class="stage-prompt-block">
+        <div class="stage-prompt-label">Claude Prompt Used</div>
+        <div class="stage-prompt-text">
+          "Using this insight: [insight] and this hook: [hook], write a 6-slide Instagram carousel in the GMP brand voice. Slide 1: The hook — one line, bold, no explanation. Slide 2: Name the problem — what most women are doing or believing that keeps them stuck. Slides 3–4: Break it down — specific, real, no fluff. Each slide one clear idea, 1–2 sentences max. Slide 5: The shift — what changes when she sees this clearly. Slide 6: The activation — one question or statement she can sit with. No slide should have more than 2 sentences. Write for someone skimming at speed."
+        </div>
+      </div>
+      <div class="stage-output-label">Output from This Stage</div>
+      <ul class="stage-output-list">
+        <li>6-slide carousel copy — structured and ready for design</li>
+        <li>Canva design produced using GMP brand colors and typography</li>
+        <li>Formatted for Instagram — optimized for mobile viewing</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- STAGE 5 -->
+  <div class="section">
+    <div class="section-label">06 — Stage Five</div>
+    <div class="section-title">Email & <em>Community</em> Content</div>
+
+    <div class="stage-card stage-5">
+      <div class="stage-header">
+        <div class="stage-title-block">
+          <div class="stage-number">Stage 05 of 06</div>
+          <div class="stage-name">Repurpose to Email or Community</div>
+        </div>
+        <div class="stage-tool-badge"><span>Tool — ChatGPT</span></div>
+      </div>
+      <div class="stage-description">
+        The same insight is adapted into a short-form email or community post — for a newsletter, a Skool community, or a free group. This version is more personal and conversational than the social content. It feels like a direct message, not a broadcast. ChatGPT handles the structural adaptation from social to long-form personal.
+      </div>
+      <div class="stage-prompt-block">
+        <div class="stage-prompt-label">ChatGPT Prompt Used</div>
+        <div class="stage-prompt-text">
+          "Adapt this insight into a short email or community post for The Girl Mompreneur audience — moms in an identity and income transition. Tone: personal, direct, warm. Write it like she's writing to one woman she knows, not a list. Open with the insight as a personal realization ('Something I've been sitting with...' or 'I keep coming back to this...'). 2–3 short paragraphs. Close with one question or invitation — not a sales pitch. Under 180 words total. No subject line needed."
+        </div>
+      </div>
+      <div class="stage-output-label">Output from This Stage</div>
+      <ul class="stage-output-list">
+        <li>Email or community post — under 180 words</li>
+        <li>Personal tone distinct from social content</li>
+        <li>Reusable for newsletter, Skool, or private community</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- STAGE 6 -->
+  <div class="section">
+    <div class="section-label">07 — Stage Six</div>
+    <div class="section-title">Future <em>Offer</em> Content</div>
+
+    <div class="stage-card stage-6">
+      <div class="stage-header">
+        <div class="stage-title-block">
+          <div class="stage-number">Stage 06 of 06</div>
+          <div class="stage-name">Seed Future Offer Content</div>
+        </div>
+        <div class="stage-tool-badge"><span>Tool — Claude</span></div>
+      </div>
+      <div class="stage-description">
+        Every strong insight is also a content seed for a future offer — a course module, a coaching prompt, a community challenge, or a product concept. Claude extracts the teachable core of the insight and maps it to a potential offer context. This keeps the content ecosystem connected to the business — not just the audience feed.
+      </div>
+      <div class="stage-prompt-block">
+        <div class="stage-prompt-label">Claude Prompt Used</div>
+        <div class="stage-prompt-text">
+          "Based on this insight: [insight], identify the teachable core — the specific transformation, belief shift, or skill this speaks to. Then suggest: (1) which GMP offer this could live inside as a module or lesson, (2) one discussion prompt this could become inside a community, (3) one challenge or exercise that would help a student embody this insight. Keep each suggestion to 2–3 sentences. This is for internal planning, not public content."
+        </div>
+      </div>
+      <div class="stage-output-label">Output from This Stage</div>
+      <ul class="stage-output-list">
+        <li>Offer mapping — which product this insight connects to</li>
+        <li>Community discussion prompt — ready to post</li>
+        <li>Student exercise or challenge concept</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- LIVE EXAMPLE -->
+  <div class="section">
+    <div class="section-label">08 — Live Example</div>
+    <div class="section-title">Workflow in <em>Action</em></div>
+    <div class="section-body">One insight run through all six stages — showing exactly what the workflow produces from start to finish.</div>
+
+    <div class="example-flow">
+      <div class="example-stage">
+        <div class="example-stage-label">Raw Insight</div>
+        <div class="example-stage-content">"Women keep starting over not because they lack discipline — but because their identity hasn't caught up to what they're trying to build."</div>
+      </div>
+      <div class="example-stage">
+        <div class="example-stage-label">Selected Hook</div>
+        <div class="example-stage-content">"Starting over isn't a discipline problem. It's an identity problem."</div>
+      </div>
+      <div class="example-stage">
+        <div class="example-stage-label">Reel Opening</div>
+        <div class="example-stage-content">"Starting over isn't a discipline problem. It's an identity problem. You don't keep quitting because you're weak. You keep quitting because you're asking a version of yourself that doesn't exist yet to do the work."</div>
+      </div>
+      <div class="example-stage">
+        <div class="example-stage-label">Caption Open</div>
+        <div class="example-stage-content">"Starting over isn't a discipline problem. It's an identity problem. I used to think I just needed more willpower. More structure. A better morning routine. What I actually needed was to stop trying to execute from a version of myself I hadn't become yet."</div>
+      </div>
+      <div class="example-stage">
+        <div class="example-stage-label">Carousel Slide 1</div>
+        <div class="example-stage-content">"Starting over isn't a discipline problem."</div>
+      </div>
+      <div class="example-stage">
+        <div class="example-stage-label">Email Opening</div>
+        <div class="example-stage-content plain">"Something I keep coming back to — most of us aren't starting over because we're undisciplined. We're starting over because we're trying to build from an identity we haven't stepped into yet. The plan isn't the problem. The becoming is."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section">
+    <div class="section-label">09 — Workflow Summary</div>
+    <div class="section-title">Time, Tools & <em>Output</em></div>
+
+    <div class="summary-grid">
+      <div class="summary-cell">
+        <div class="summary-cell-icon">◎</div>
+        <div class="summary-cell-title">Total Time</div>
+        <div class="summary-cell-body">90–120 minutes per full workflow run — from raw insight to all six assets delivered and formatted. Carousel design in Canva is the longest step at 30–40 minutes.</div>
+      </div>
+      <div class="summary-cell">
+        <div class="summary-cell-icon">◎</div>
+        <div class="summary-cell-title">Tools Used</div>
+        <div class="summary-cell-body">Claude or ChatGPT for hooks and insights. ChatGPT for Reel scripts, captions, and email adaptation. Claude for carousel copy and offer mapping. Canva for carousel design and visual formatting.</div>
+      </div>
+      <div class="summary-cell">
+        <div class="summary-cell-icon">◎</div>
+        <div class="summary-cell-title">Assets Produced</div>
+        <div class="summary-cell-body">1 Reel script, 1 Instagram caption, 1 six-slide carousel, 1 email or community post, 1 offer content seed — from a single original insight.</div>
+      </div>
+    </div>
+
+    <div class="replication-block">
+      <div class="replication-label">For Clients — Replication Notes</div>
+      <div class="replication-title">"This workflow is brand-agnostic. It runs on any creator with a clear voice, defined pillars, and a real insight to start from."</div>
+      <div class="replication-grid">
+        <div>
+          <div class="replication-item-label">What the Client Provides</div>
+          <div class="replication-item-value">Raw insight or content idea, brand voice reference doc, content pillars, and approval on the selected hook before the full suite is built.</div>
+        </div>
+        <div>
+          <div class="replication-item-label">What Gets Delivered</div>
+          <div class="replication-item-value">All six assets in a single Google Doc — organized by stage, formatted for use, and ready to post or hand off to a scheduler.</div>
+        </div>
+        <div>
+          <div class="replication-item-label">Turnaround Time</div>
+          <div class="replication-item-value">24–48 hours per full workflow run. Rush turnaround available at adjusted rate.</div>
+        </div>
+        <div>
+          <div class="replication-item-label">Customization</div>
+          <div class="replication-item-value">All prompts are adapted to the client's brand voice, audience, and platform before the workflow runs. No generic output.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="doc-footer-brand">The Girl Mompreneur</div>
+    <div class="doc-footer-meta">
+      Prepared by Ada Pinales<br>
+      Content Systems &amp; AI Workflow Specialist for Creators<br>
+      @iamAdaPinales
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

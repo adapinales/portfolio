@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Girl Mompreneur — Content Pillars & Messaging Framework</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFFFFF;
+    --warm-white: #FAFAFA;
+    --ink: #1C1917;
+    --ink-light: #44403C;
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --terracotta: #C4623A;
+    --sage: #6B7C6E;
+    --border: #E8E0D4;
+    --section-gap: 72px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* COVER PAGE */
+  .cover {
+    min-height: 100vh;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 10%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,134,11,0.12) 0%, transparent 70%);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: 5%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,98,58,0.08) 0%, transparent 70%);
+  }
+
+  .cover-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 32px;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--warm-white);
+    margin-bottom: 8px;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(253,250,246,0.55);
+    margin-bottom: 56px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cover-meta-item span:first-child {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(253,250,246,0.35);
+  }
+
+  .cover-meta-item span:last-child {
+    font-size: 14px;
+    color: rgba(253,250,246,0.75);
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 48px;
+  }
+
+  /* DOCUMENT BODY */
+  .document {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: var(--section-gap);
+    animation: fadeUp 0.6s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-light);
+    max-width: 680px;
+  }
+
+  /* BRAND SNAPSHOT */
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 32px;
+  }
+
+  .snapshot-cell {
+    background: var(--warm-white);
+    padding: 28px 32px;
+  }
+
+  .snapshot-cell.full {
+    grid-column: 1 / -1;
+  }
+
+  .snapshot-cell-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .snapshot-cell-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  /* PILLAR CARDS */
+  .pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 32px;
+  }
+
+  .pillar-card {
+    background: var(--warm-white);
+    border-left: 3px solid transparent;
+    padding: 32px 36px;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+
+  .pillar-card:nth-child(1) { border-left-color: var(--gold); }
+  .pillar-card:nth-child(2) { border-left-color: var(--terracotta); }
+  .pillar-card:nth-child(3) { border-left-color: var(--sage); }
+
+  .pillar-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--border);
+    position: absolute;
+    top: 20px;
+    right: 32px;
+    line-height: 1;
+  }
+
+  .pillar-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .pillar-tagline {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .pillar-description {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--ink-light);
+    margin-bottom: 20px;
+    max-width: 580px;
+  }
+
+  .pillar-content-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 5px 14px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--ink-light);
+    background: var(--cream);
+  }
+
+  /* MESSAGING */
+  .messaging-block {
+    background: var(--ink);
+    padding: 48px;
+    margin-top: 32px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .messaging-block::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 200px;
+    color: rgba(255,255,255,0.04);
+    position: absolute;
+    top: -20px;
+    left: 24px;
+    line-height: 1;
+  }
+
+  .messaging-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .messaging-statement {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--warm-white);
+    line-height: 1.45;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .messaging-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .messaging-item-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(253,250,246,0.55);
+    margin-bottom: 8px;
+  }
+
+  .messaging-item-value {
+    font-size: 14px;
+    color: rgba(253,250,246,0.8);
+    line-height: 1.6;
+  }
+
+  /* VOICE GUIDE */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 32px;
+    background: var(--border);
+  }
+
+  .voice-cell {
+    background: var(--warm-white);
+    padding: 28px 32px;
+  }
+
+  .voice-cell-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .voice-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .voice-list li {
+    font-size: 13.5px;
+    color: var(--ink-light);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .voice-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--terracotta);
+  }
+
+  /* HOOKS SECTION */
+  .hooks-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 32px;
+  }
+
+  .hook-row {
+    background: var(--warm-white);
+    padding: 24px 32px;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .hook-pillar {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    padding-top: 2px;
+  }
+
+  .hook-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .doc-footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .doc-footer-meta {
+    font-size: 11px;
+    color: var(--sage);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* EXPORT NOTE */
+  .export-note {
+    background: #F5F5F5;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 16px 24px;
+    margin-bottom: 48px;
+    font-size: 12px;
+    color: var(--ink-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .export-note strong {
+    color: var(--ink);
+  }
+
+  @media (max-width: 640px) {
+    .document { padding: 48px 24px; }
+    .cover { padding: 60px 24px; }
+    .snapshot-grid { grid-template-columns: 1fr; }
+    .messaging-breakdown { grid-template-columns: 1fr; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .hook-row { grid-template-columns: 1fr; gap: 8px; }
+    .cover-meta { gap: 28px; }
+  }
+
+  @media print {
+    .export-note { display: none; }
+    .cover { min-height: auto; padding: 60px 10%; page-break-after: always; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Portfolio Asset No. 01 — Brand Strategy Document</div>
+  <div class="cover-line"></div>
+  <div class="cover-title">The Girl<br><em>Mompreneur</em></div>
+  <div class="cover-subtitle">Content Pillars & Messaging Framework</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span>Prepared by</span>
+      <span>Ada Pinales</span>
+    </div>
+    <div class="cover-meta-item">
+      <span>Brand</span>
+      <span>The Girl Mompreneur</span>
+    </div>
+    <div class="cover-meta-item">
+      <span>Handle</span>
+      <span>@iamAdaPinales</span>
+    </div>
+    <div class="cover-meta-item">
+      <span>Version</span>
+      <span>1.0 — 2025</span>
+    </div>
+  </div>
+</div>
+
+<!-- DOCUMENT BODY -->
+<div class="document">
+
+  <div class="export-note">
+    <strong>Portfolio Document:</strong>&nbsp; This framework was built as a live case study for Ada Pinales — Content Systems &amp; AI Workflow Specialist for Creators. All strategy and systems were developed using Claude, ChatGPT, and Canva.
+  </div>
+
+  <!-- BRAND SNAPSHOT -->
+  <div class="section">
+    <div class="section-label">01 — Brand Overview</div>
+    <div class="section-title">Brand <em>Snapshot</em></div>
+    <div class="section-body">
+      A working reference document for The Girl Mompreneur — establishing who we serve, what we stand for, and how every piece of content connects back to a single strategic vision.
+    </div>
+    <div class="snapshot-grid">
+      <div class="snapshot-cell">
+        <div class="snapshot-cell-label">Brand Name</div>
+        <div class="snapshot-cell-value">The Girl Mompreneur</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-cell-label">Founder</div>
+        <div class="snapshot-cell-value">Ada Pinales</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-cell-label">Primary Audience</div>
+        <div class="snapshot-cell-value">Moms who want flexibility and freedom over a traditional job</div>
+      </div>
+      <div class="snapshot-cell">
+        <div class="snapshot-cell-label">Platform Focus</div>
+        <div class="snapshot-cell-value">Instagram (primary) — TikTok (expanding)</div>
+      </div>
+      <div class="snapshot-cell full">
+        <div class="snapshot-cell-label">Brand Mission</div>
+        <div class="snapshot-cell-value">To help women move differently — building identity, discipline, and foundation before chasing income — so the life they want is built on something real.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT PILLARS -->
+  <div class="section">
+    <div class="section-label">02 — Content Strategy</div>
+    <div class="section-title">The Three <em>Pillars</em></div>
+    <div class="section-body">
+      Every piece of content published under The Girl Mompreneur maps to one of three core pillars. These pillars are not topics — they are positions. They define what this brand believes and why the audience should keep coming back.
+    </div>
+
+    <div class="pillars">
+
+      <div class="pillar-card">
+        <div class="pillar-number">01</div>
+        <div class="pillar-tagline">The Foundation Pillar</div>
+        <div class="pillar-name">Identity Before Income</div>
+        <div class="pillar-description">
+          Most women trying to build income online skip the most important step: becoming the version of themselves who can hold what they're building. This pillar challenges the "start with strategy" approach and anchors the audience in a truth most business content avoids — who you are determines what you can build. Content under this pillar creates the identity shift before anything else.
+        </div>
+        <div class="pillar-content-types">
+          <span class="tag">Self-concept</span>
+          <span class="tag">Mindset</span>
+          <span class="tag">Who you're becoming</span>
+          <span class="tag">Identity work</span>
+          <span class="tag">Personal transformation</span>
+          <span class="tag">Inner work</span>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-number">02</div>
+        <div class="pillar-tagline">The Behavior Pillar</div>
+        <div class="pillar-name">Moving Differently</div>
+        <div class="pillar-description">
+          Intentional over reactive. Disciplined over motivated. This pillar is where identity meets daily behavior — the practices, decisions, and standards a woman has to operate from if she wants a different outcome. It's not about hustle. It's about moving with purpose when no one is watching and when nothing is working yet. This pillar builds trust because it speaks to real life, not highlight reels.
+        </div>
+        <div class="pillar-content-types">
+          <span class="tag">Daily discipline</span>
+          <span class="tag">Intentional habits</span>
+          <span class="tag">Decision-making</span>
+          <span class="tag">Boundaries</span>
+          <span class="tag">Consistency</span>
+          <span class="tag">Motherhood & ambition</span>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-number">03</div>
+        <div class="pillar-tagline">The Awakening Pillar</div>
+        <div class="pillar-name">Awareness Before Action</div>
+        <div class="pillar-description">
+          Most women are not stuck because they lack strategy. They're stuck because they don't see clearly yet — about themselves, their patterns, their fears, or what they're actually building toward. This pillar creates the "I didn't realize that" moments that make people stop scrolling. It names things the audience feels but hasn't articulated. It is the most shareable, most viral-potential pillar because it speaks the truth out loud.
+        </div>
+        <div class="pillar-content-types">
+          <span class="tag">Pattern recognition</span>
+          <span class="tag">Truth-telling</span>
+          <span class="tag">Wake-up call content</span>
+          <span class="tag">Reframes</span>
+          <span class="tag">Root cause</span>
+          <span class="tag">Blind spots</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CORE MESSAGING -->
+  <div class="section">
+    <div class="section-label">03 — Positioning</div>
+    <div class="section-title">Core <em>Messaging</em></div>
+    <div class="section-body">
+      The brand's central message — the throughline every piece of content should connect back to.
+    </div>
+
+    <div class="messaging-block">
+      <div class="messaging-label">Brand Positioning Statement</div>
+      <div class="messaging-statement">
+        "The women who will build something real aren't the ones with the best strategy. They're the ones who did the identity work first — and moved differently because of it."
+      </div>
+      <div class="messaging-breakdown">
+        <div>
+          <div class="messaging-item-label">The Problem We Name</div>
+          <div class="messaging-item-value">Women are chasing income without building the identity, discipline, and foundation that can hold it. The strategy comes before the self-work — and that's why it collapses.</div>
+        </div>
+        <div>
+          <div class="messaging-item-label">The Shift We Create</div>
+          <div class="messaging-item-value">From reactive builder to intentional creator. From motivated-when-it's-easy to disciplined-when-it's-hard. From following the blueprint to becoming someone who writes her own.</div>
+        </div>
+        <div>
+          <div class="messaging-item-label">Who We Are Not For</div>
+          <div class="messaging-item-value">Women looking for a shortcut, a passive income hack, or another funnel. This brand is for women ready to do the actual work of becoming.</div>
+        </div>
+        <div>
+          <div class="messaging-item-label">The Promise</div>
+          <div class="messaging-item-value">If you do the inner work, build the foundation, and move with intention — what you're building will actually last.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VOICE GUIDE -->
+  <div class="section">
+    <div class="section-label">04 — Brand Voice</div>
+    <div class="section-title">Voice & Tone <em>Guide</em></div>
+    <div class="section-body">
+      How The Girl Mompreneur sounds — and doesn't sound — across every piece of content.
+    </div>
+
+    <div class="voice-grid">
+      <div class="voice-cell">
+        <div class="voice-cell-title">Always Sound Like</div>
+        <ul class="voice-list">
+          <li>Aspirational but grounded — real possibility, not hype</li>
+          <li>Warm but direct — kind delivery, honest message</li>
+          <li>Self-aware — speaks from her own story, not a pedestal</li>
+          <li>Specific — names real feelings, real patterns, real moments</li>
+          <li>Calm and certain — not loud, not urgent, not desperate</li>
+          <li>Like a woman who has done the work and wants to bring others with her</li>
+        </ul>
+      </div>
+      <div class="voice-cell">
+        <div class="voice-cell-title">Never Sound Like</div>
+        <ul class="voice-list">
+          <li>Hype culture — "This will change your life in 30 days"</li>
+          <li>Fake boss babe energy — hollow empowerment without substance</li>
+          <li>Preachy or superior — this is not a lecture</li>
+          <li>Generic motivation — "Believe in yourself, queen"</li>
+          <li>Urgency for urgency's sake — "You're running out of time"</li>
+          <li>Disconnected from real motherhood and real money pressure</li>
+        </ul>
+      </div>
+      <div class="voice-cell">
+        <div class="voice-cell-title">Content Formula</div>
+        <ul class="voice-list">
+          <li><strong>Realization</strong> — name the thing most people don't see yet</li>
+          <li><strong>Explanation</strong> — break down why it's true</li>
+          <li><strong>Embodiment</strong> — show what it looks like lived out</li>
+          <li><strong>Activation</strong> — leave her with something to do or think about</li>
+        </ul>
+      </div>
+      <div class="voice-cell">
+        <div class="voice-cell-title">Voice Anchors</div>
+        <ul class="voice-list">
+          <li>Personal story as entry point</li>
+          <li>Truth-telling over comfort</li>
+          <li>The "I didn't realize that" moment as the goal</li>
+          <li>Discipline framed as emotional regulation, not grind</li>
+          <li>Identity language — who she is becoming, not what she should do</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAMPLE HOOKS -->
+  <div class="section">
+    <div class="section-label">05 — Content Examples</div>
+    <div class="section-title">Sample <em>Hooks</em> by Pillar</div>
+    <div class="section-body">
+      Hooks written in the GMP voice — one per pillar — demonstrating how the brand opens content across all three positions.
+    </div>
+
+    <div class="hooks-grid">
+      <div class="hook-row">
+        <div class="hook-pillar">Identity Before Income</div>
+        <div class="hook-text">"The reason your strategy isn't working has nothing to do with the strategy."</div>
+      </div>
+      <div class="hook-row">
+        <div class="hook-pillar">Moving Differently</div>
+        <div class="hook-text">"She's not more motivated than you. She just stopped waiting to feel ready."</div>
+      </div>
+      <div class="hook-row">
+        <div class="hook-pillar">Awareness Before Action</div>
+        <div class="hook-text">"Most women aren't stuck because they don't know enough. They're stuck because they haven't seen themselves clearly yet."</div>
+      </div>
+      <div class="hook-row">
+        <div class="hook-pillar">Identity Before Income</div>
+        <div class="hook-text">"You can follow every step in the blueprint and still fail — if you haven't become the woman who can hold what you're building."</div>
+      </div>
+      <div class="hook-row">
+        <div class="hook-pillar">Moving Differently</div>
+        <div class="hook-text">"Discipline isn't about pushing harder. It's about knowing who you are when you don't feel like it."</div>
+      </div>
+      <div class="hook-row">
+        <div class="hook-pillar">Awareness Before Action</div>
+        <div class="hook-text">"The version of you that keeps starting over isn't lazy. She's just building on the wrong foundation."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="doc-footer-brand">The Girl Mompreneur</div>
+    <div class="doc-footer-meta">
+      Prepared by Ada Pinales<br>
+      Content Systems &amp; AI Workflow Specialist for Creators<br>
+      @iamAdaPinales
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
