@@ -13,6 +13,7 @@ export type Callout = {
   endSec: number;
   title: string;
   subtitle?: string;
+  bullets?: string[];
 };
 
 export type CalloutsProps = {
@@ -87,6 +88,43 @@ export const Callouts: React.FC<CalloutsProps> = ({ callouts }) => {
               }}
             >
               {active.subtitle}
+            </div>
+          ) : null}
+          {active.bullets && active.bullets.length > 0 ? (
+            <div style={{ marginTop: 18 }}>
+              {active.bullets.map((b, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    marginTop: i === 0 ? 0 : 12,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 10,
+                      height: 10,
+                      borderRadius: 5,
+                      backgroundColor: colors.taupe,
+                      marginTop: 12,
+                      marginRight: 16,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <div
+                    style={{
+                      fontFamily: fonts.body,
+                      fontWeight: 500,
+                      fontSize: 30,
+                      lineHeight: 1.3,
+                      color: colors.ivory,
+                    }}
+                  >
+                    {b}
+                  </div>
+                </div>
+              ))}
             </div>
           ) : null}
         </div>

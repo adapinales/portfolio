@@ -1,0 +1,67 @@
+name: Get Transcript
+
+# Quick helper: downloads the lesson and transcribes it, then prints the
+# transcript with timestamps to the logs (and uploads captions.json).
+# Used to draft callout cards without doing a full ~30min render.
+
+on:
+  workflow_dispatch:
+    inputs:
+      drive_url:
+        description: "Google Drive link to the lesson video (must be shareable)"
+        required: true
+        default: "https://drive.google.com/file/d/1WGR3HJSSEVoPdzR0Rr0CsuAteMoY_r5L/view"
+      whisper_model:
+        description: "Caption accuracy model"
+        required: true
+        default: "small.en"
+
+jobs:
+  transcript:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: income-switch-video
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - name: Download the lesson video from Google Drive
+        run: |
+          pipx install gdown
+          URL="${{ github.event.inputs.drive_url }}"
+          FILE_ID=$(echo "$URL" | grep -oE '[-_A-Za-z0-9]{25,}' | head -n1)
+          gdown "https://drive.google.com/uc?id=${FILE_ID}" -O public/lesson.mp4
+      - name: Generate captions (Whisper)
+        env:
+          WHISPER_MODEL: ${{ github.event.inputs.whisper_model }}
+        run: npm run transcribe
+      - name: Print transcript with timestamps
+        run: |
+          node -e '
+          const c = require("./public/captions.json");
+          let words = [], start = null;
+          const flush = () => {
+            if (words.length) {
+              console.log("[" + (start / 1000).toFixed(1) + "s] " + words.join(" "));
+              words = []; start = null;
+            }
+          };
+          for (const w of c) {
+            const t = (w.text || "").trim();
+            if (!t) continue;
+            if (start === null) start = w.startMs;
+            words.push(t);
+            if (/[.!?]$/.test(t) || words.length >= 16) flush();
+          }
+          flush();
+          '
+      - uses: actions/upload-artifact@v4
+        with:
+          name: transcript
+          path: income-switch-video/public/captions.json
+          if-no-files-found: error
+          retention-days: 30
