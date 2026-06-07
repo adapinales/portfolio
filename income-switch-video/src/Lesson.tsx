@@ -14,10 +14,12 @@ import { IntroCard, type IntroCardProps } from "./components/IntroCard";
 import { LowerThird, type LowerThirdProps } from "./components/LowerThird";
 import { Outro, type OutroProps } from "./components/Outro";
 import { Captions } from "./components/Captions";
+import { Callouts, type Callout } from "./components/Callouts";
 
 export type LessonProps = {
   videoFile: string;
   captionsFile: string;
+  calloutsFile: string;
   intro: IntroCardProps;
   lowerThird: LowerThirdProps;
   outro: OutroProps;
@@ -28,6 +30,7 @@ export type LessonProps = {
 export const Lesson: React.FC<LessonProps> = ({
   videoFile,
   captionsFile,
+  calloutsFile,
   intro,
   lowerThird,
   outro,
@@ -37,6 +40,9 @@ export const Lesson: React.FC<LessonProps> = ({
 
   const [captions, setCaptions] = useState<Caption[]>([]);
   const [handle] = useState(() => delayRender("loading-captions"));
+
+  const [callouts, setCallouts] = useState<Callout[]>([]);
+  const [calloutHandle] = useState(() => delayRender("loading-callouts"));
 
   useEffect(() => {
     fetch(staticFile(captionsFile))
@@ -51,6 +57,19 @@ export const Lesson: React.FC<LessonProps> = ({
       });
   }, [captionsFile, handle]);
 
+  useEffect(() => {
+    fetch(staticFile(calloutsFile))
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data: Callout[]) => {
+        setCallouts(Array.isArray(data) ? data : []);
+        continueRender(calloutHandle);
+      })
+      .catch(() => {
+        // No callouts file — that's fine, just skip them.
+        continueRender(calloutHandle);
+      });
+  }, [calloutsFile, calloutHandle]);
+
   const outroFrames = Math.round(outroSeconds * fps);
   const videoFrames = Math.max(1, durationInFrames - outroFrames);
   const introFrames = Math.round(3.5 * fps);
@@ -62,6 +81,11 @@ export const Lesson: React.FC<LessonProps> = ({
       {/* Footage */}
       <Sequence durationInFrames={videoFrames}>
         <OffthreadVideo src={staticFile(videoFile)} />
+      </Sequence>
+
+      {/* Pop-up corner callout cards over the footage */}
+      <Sequence durationInFrames={videoFrames}>
+        <Callouts callouts={callouts} />
       </Sequence>
 
       {/* Auto captions (clean subtitles) over the footage */}
