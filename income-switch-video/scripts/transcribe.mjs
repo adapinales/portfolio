@@ -52,6 +52,7 @@ console.log("→ Transcribing… (this can take a while on long videos)");
 const whisperOutput = await transcribe({
   inputPath: wavPath,
   whisperPath,
+  whisperCppVersion: whisperVersion,
   model,
   tokenLevelTimestamps: true,
   printOutput: false,
