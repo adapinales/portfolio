@@ -1,0 +1,31 @@
+{
+  "name": "income-switch-video",
+  "version": "1.0.0",
+  "description": "Remotion project for The Income Switch — branded graphics + auto captions over course footage.",
+  "scripts": {
+    "studio": "remotion studio",
+    "transcribe": "node scripts/transcribe.mjs",
+    "render": "remotion render Lesson out/start-here.mp4",
+    "render:intro": "remotion render IntroCard out/intro.mp4",
+    "render:outro": "remotion render Outro out/outro.mp4",
+    "typecheck": "tsc --noEmit",
+    "upgrade": "remotion upgrade"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@remotion/captions": "^4.0.473",
+    "@remotion/cli": "^4.0.473",
+    "@remotion/google-fonts": "^4.0.473",
+    "@remotion/install-whisper-cpp": "^4.0.473",
+    "@remotion/media-parser": "^4.0.473",
+    "ffmpeg-static": "^5.3.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "remotion": "^4.0.473"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^6.0.3"
+  }
+}
