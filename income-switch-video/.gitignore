@@ -1,0 +1,9 @@
+node_modules/
+out/
+whisper.cpp/
+.cache/
+
+# Footage is large and lives in Google Drive, not git.
+public/*.mp4
+public/*.mov
+public/*.webm
