@@ -1,1 +1,52 @@
-[]
+[
+  {
+    "startSec": 12,
+    "endSec": 19.5,
+    "title": "What This Isn't",
+    "bullets": [
+      "Not a digital income course",
+      "Not a strategy course",
+      "Not step-by-step"
+    ]
+  },
+  {
+    "startSec": 32,
+    "endSec": 40,
+    "title": "The Cycle",
+    "bullets": [
+      "Start, stop, start again",
+      "Excitement, then lost momentum",
+      "Back to the same place"
+    ]
+  },
+  {
+    "startSec": 77,
+    "endSec": 88,
+    "title": "What This Is About",
+    "bullets": [
+      "Awareness",
+      "Understanding yourself",
+      "Seeing your patterns"
+    ]
+  },
+  {
+    "startSec": 106,
+    "endSec": 116,
+    "title": "How to Approach This",
+    "bullets": [
+      "Don't rush",
+      "Stay curious",
+      "Notice what resonates"
+    ]
+  },
+  {
+    "startSec": 127.5,
+    "endSec": 138,
+    "title": "Module 1",
+    "subtitle": "Name What's Running the Show",
+    "bullets": [
+      "See your patterns — no shame",
+      "You can't change what you can't see"
+    ]
+  }
+]
