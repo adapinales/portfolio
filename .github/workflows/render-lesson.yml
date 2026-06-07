@@ -51,6 +51,19 @@ jobs:
           gdown "https://drive.google.com/uc?id=${FILE_ID}" -O public/lesson.mp4
           ls -lh public/lesson.mp4
 
+      - name: Normalize footage to constant frame rate
+        # Re-encode to a steady 30fps so the rendered video never freezes
+        # (variable-frame-rate recordings cause the picture to stutter while
+        # audio stays fine).
+        run: |
+          ffmpeg -y -i public/lesson.mp4 \
+            -r 30 -fps_mode cfr \
+            -c:v libx264 -preset veryfast -crf 18 -pix_fmt yuv420p \
+            -c:a aac -b:a 192k \
+            public/lesson_cfr.mp4
+          mv public/lesson_cfr.mp4 public/lesson.mp4
+          ls -lh public/lesson.mp4
+
       - name: Generate captions (Whisper)
         env:
           WHISPER_MODEL: ${{ github.event.inputs.whisper_model }}
