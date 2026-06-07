@@ -44,8 +44,11 @@ jobs:
       - name: Download the lesson video from Google Drive
         run: |
           pipx install gdown
-          echo "Downloading footage..."
-          gdown --fuzzy "${{ github.event.inputs.drive_url }}" -O public/lesson.mp4
+          URL="${{ github.event.inputs.drive_url }}"
+          # Pull the long file-id token out of whatever Drive URL format was given.
+          FILE_ID=$(echo "$URL" | grep -oE '[-_A-Za-z0-9]{25,}' | head -n1)
+          echo "Downloading Drive file id: $FILE_ID"
+          gdown "https://drive.google.com/uc?id=${FILE_ID}" -O public/lesson.mp4
           ls -lh public/lesson.mp4
 
       - name: Generate captions (Whisper)
