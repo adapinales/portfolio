@@ -16,7 +16,7 @@ export type OutroProps = {
 
 export const outroDefaults: OutroProps = {
   title: "You're in.",
-  cta: "Next up: Module 1 — Name It",
+  cta: "Next up: Name What's Running The Show",
   brandLabel: brandName,
 };
 
