@@ -18,6 +18,7 @@ const HEIGHT = 1080;
 const startHereProps: LessonProps = {
   videoFile: "lesson.mp4",
   captionsFile: "captions.json",
+  calloutsFile: "callouts.json",
   intro: {
     title: "Start Here",
     subtitle: "Welcome to The Income Switch",
