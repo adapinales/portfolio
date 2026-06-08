@@ -1,52 +1,70 @@
 [
   {
+    "startSec": 1.5,
+    "endSec": 12,
+    "title": "Start Here",
+    "subtitle": "Why this exists",
+    "bullets": ["What this is", "Why I made it", "What you'll take away"]
+  },
+  {
     "startSec": 12,
-    "endSec": 19.5,
+    "endSec": 20,
     "title": "What This Isn't",
-    "bullets": [
-      "Not a digital income course",
-      "Not a strategy course",
-      "Not step-by-step"
-    ]
+    "bullets": ["Not a digital income course", "Not a strategy course", "Not step-by-step"]
   },
   {
-    "startSec": 32,
-    "endSec": 40,
+    "startSec": 20,
+    "endSec": 31,
+    "title": "You Already Know",
+    "bullets": ["Be consistent", "Follow through", "Trust yourself"]
+  },
+  {
+    "startSec": 31,
+    "endSec": 45,
     "title": "The Cycle",
-    "bullets": [
-      "Start, stop, start again",
-      "Excitement, then lost momentum",
-      "Back to the same place"
-    ]
+    "bullets": ["Start, stop, start again", "Excitement, then lost momentum", "Back to the same place"]
   },
   {
-    "startSec": 77,
-    "endSec": 88,
+    "startSec": 45,
+    "endSec": 59,
+    "title": "It's Not Willpower",
+    "bullets": ["Not a motivation problem", "Not a discipline problem", "Something deeper"]
+  },
+  {
+    "startSec": 59,
+    "endSec": 71,
+    "title": "Hidden Patterns",
+    "bullets": ["How you think", "How you react", "How you show up"]
+  },
+  {
+    "startSec": 71,
+    "endSec": 91,
     "title": "What This Is About",
-    "bullets": [
-      "Awareness",
-      "Understanding yourself",
-      "Seeing your patterns"
-    ]
+    "bullets": ["Awareness", "Understanding yourself", "Seeing your patterns"]
   },
   {
-    "startSec": 106,
+    "startSec": 91,
+    "endSec": 104,
+    "title": "Why We Start Here",
+    "bullets": ["Not just new results", "Becoming who can hold them"]
+  },
+  {
+    "startSec": 104,
     "endSec": 116,
     "title": "How to Approach This",
-    "bullets": [
-      "Don't rush",
-      "Stay curious",
-      "Notice what resonates"
-    ]
+    "bullets": ["Don't rush", "You don't need to fix yourself", "No perfect plan needed"]
   },
   {
-    "startSec": 127.5,
-    "endSec": 138,
+    "startSec": 116,
+    "endSec": 127,
+    "title": "Pay Attention To",
+    "bullets": ["What resonates", "What makes you pause", "Where you recognize yourself"]
+  },
+  {
+    "startSec": 127,
+    "endSec": 139,
     "title": "Module 1",
     "subtitle": "Name What's Running the Show",
-    "bullets": [
-      "See your patterns — no shame",
-      "You can't change what you can't see"
-    ]
+    "bullets": ["See your patterns — no shame", "You can't change what you can't see"]
   }
 ]

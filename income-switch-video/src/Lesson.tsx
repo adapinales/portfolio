@@ -14,7 +14,12 @@ import { IntroCard, type IntroCardProps } from "./components/IntroCard";
 import { LowerThird, type LowerThirdProps } from "./components/LowerThird";
 import { Outro, type OutroProps } from "./components/Outro";
 import { Captions } from "./components/Captions";
-import { Callouts, type Callout } from "./components/Callouts";
+import { SidePanel, type Callout } from "./components/Callouts";
+
+// Vertical speaker video sits flush-left at full height; the branded panel
+// fills the rest of the 16:9 frame to its right.
+const PANEL_LEFT = 680;
+const CAPTION_REGION_WIDTH = 660;
 
 export type LessonProps = {
   videoFile: string;
@@ -52,7 +57,6 @@ export const Lesson: React.FC<LessonProps> = ({
         continueRender(handle);
       })
       .catch(() => {
-        // No captions yet — render the video + graphics anyway.
         continueRender(handle);
       });
   }, [captionsFile, handle]);
@@ -65,7 +69,6 @@ export const Lesson: React.FC<LessonProps> = ({
         continueRender(calloutHandle);
       })
       .catch(() => {
-        // No callouts file — that's fine, just skip them.
         continueRender(calloutHandle);
       });
   }, [calloutsFile, calloutHandle]);
@@ -78,22 +81,43 @@ export const Lesson: React.FC<LessonProps> = ({
 
   return (
     <AbsoluteFill style={{ backgroundColor: colors.navy }}>
-      {/* Footage */}
+      {/* Speaker video (vertical), flush-left at full height */}
       <Sequence durationInFrames={videoFrames}>
-        <OffthreadVideo src={staticFile(videoFile)} />
+        <AbsoluteFill>
+          <OffthreadVideo
+            src={staticFile(videoFile)}
+            style={{
+              position: "absolute",
+              left: 0,
+              top: 0,
+              height: "100%",
+              width: "auto",
+            }}
+          />
+        </AbsoluteFill>
       </Sequence>
 
-      {/* Pop-up corner callout cards over the footage */}
+      {/* Branded right-hand panel: rests on the brand lockup, swaps to callouts */}
       <Sequence durationInFrames={videoFrames}>
-        <Callouts callouts={callouts} />
+        <SidePanel
+          callouts={callouts}
+          brandTitle={intro.title}
+          brandSubtitle={intro.subtitle}
+          panelLeft={PANEL_LEFT}
+        />
       </Sequence>
 
-      {/* Auto captions (clean subtitles) over the footage */}
+      {/* Captions, kept under the speaker (left region) */}
       <Sequence durationInFrames={videoFrames}>
-        <Captions captions={captions} />
+        <Captions
+          captions={captions}
+          regionLeft={0}
+          regionWidth={CAPTION_REGION_WIDTH}
+          fontSize={40}
+        />
       </Sequence>
 
-      {/* Branded intro title card */}
+      {/* Branded intro title card (full screen) */}
       <Sequence durationInFrames={introFrames}>
         <IntroCard {...intro} />
       </Sequence>
@@ -103,7 +127,7 @@ export const Lesson: React.FC<LessonProps> = ({
         <LowerThird {...lowerThird} />
       </Sequence>
 
-      {/* Branded outro / CTA appended after the footage */}
+      {/* Branded outro / CTA appended after the footage (full screen) */}
       <Sequence from={videoFrames} durationInFrames={outroFrames}>
         <Outro {...outro} />
       </Sequence>
