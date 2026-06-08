@@ -1,1 +1,18 @@
-[]
+[
+  { "startSec": 4, "endSec": 19, "title": "Where Do You Feel Stuck?", "bullets": ["Your habits", "Your confidence", "Your business or relationships"] },
+  { "startSec": 19, "endSec": 34, "title": "Sound Familiar?", "bullets": ["You know what to do…", "…but do the opposite", "Excited, then back to square one"] },
+  { "startSec": 34, "endSec": 50, "title": "It's Not What You Think", "bullets": ["Not more discipline", "Not a better strategy", "It's the patterns underneath"] },
+  { "startSec": 50, "endSec": 64, "title": "What's a Pattern?", "subtitle": "Repeated so long it feels normal", "bullets": ["How you think", "How you react", "How you talk to yourself"] },
+  { "startSec": 64, "endSec": 80, "title": "Why They Stick", "bullets": ["Started before you noticed", "They once served a purpose", "They linger after things change"] },
+  { "startSec": 80, "endSec": 93, "title": "You're Not Broken", "bullets": ["Not lazy", "Not unwilling", "Just running on autopilot"] },
+  { "startSec": 93, "endSec": 112, "title": "The Scroll Spiral", "subtitle": "A pattern I had to catch", "bullets": ["Meant to engage", "Ended up comparing", "Checking everyone's insights"] },
+  { "startSec": 112, "endSec": 131, "title": "It Felt Productive", "bullets": ["“I'm just researching”", "“I'm learning”", "Really: overwhelmed & behind"] },
+  { "startSec": 131, "endSec": 148, "title": "Then I Saw It", "bullets": ["“I've done this before”", "“I've felt this before”", "That's when it shifted"] },
+  { "startSec": 148, "endSec": 158, "title": "Once You See It", "bullets": ["Catch it sooner", "Pause", "Respond differently"] },
+  { "startSec": 158, "endSec": 177, "title": "Spot Your Pattern", "bullets": ["Inconsistency", "Perfectionism", "People-pleasing"] },
+  { "startSec": 177, "endSec": 190, "title": "…Or Maybe", "bullets": ["Shrinking & playing small", "Everything's an emergency", "Reacting before thinking"] },
+  { "startSec": 190, "endSec": 214, "title": "Why Awareness Matters", "bullets": ["The one that made you pause", "You can know and still struggle", "Awareness makes change possible"] },
+  { "startSec": 214, "endSec": 235, "title": "Your Only Job: Notice", "subtitle": "You can't change what you can't see", "bullets": ["Pick one pattern", "Notice when it shows up", "Notice how it feels"] },
+  { "startSec": 235, "endSec": 251, "title": "Just Notice", "bullets": ["Don't fix it", "Don't judge yourself", "Awareness before action"] },
+  { "startSec": 251, "endSec": 258, "title": "Module 2", "subtitle": "Understanding Your Nervous System", "bullets": ["Why patterns feel automatic"] }
+]
