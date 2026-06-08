@@ -7,3 +7,6 @@ whisper.cpp/
 public/*.mp4
 public/*.mov
 public/*.webm
+
+# Captions are generated at render time, per lesson.
+public/*.captions.json

@@ -1,0 +1,20 @@
+{
+  "videoFile": "module-1.mp4",
+  "captionsFile": "module-1.captions.json",
+  "calloutsFile": "module-1.callouts.json",
+  "intro": {
+    "title": "Module 1",
+    "subtitle": "Name What's Running the Show",
+    "brandLabel": "THE INCOME SWITCH"
+  },
+  "lowerThird": {
+    "name": "Ada Pinales",
+    "role": "The Income Switch"
+  },
+  "outro": {
+    "title": "Awareness is where it begins.",
+    "cta": "Next up: coming soon",
+    "brandLabel": "THE INCOME SWITCH"
+  },
+  "outroSeconds": 4
+}

@@ -16,9 +16,9 @@ const HEIGHT = 1080;
 // Defaults for the "Start Here" lesson. Duplicate this composition (or just
 // change the props) for every module — same look, new text + footage.
 const startHereProps: LessonProps = {
-  videoFile: "lesson.mp4",
-  captionsFile: "captions.json",
-  calloutsFile: "callouts.json",
+  videoFile: "start-here.mp4",
+  captionsFile: "start-here.captions.json",
+  calloutsFile: "start-here.callouts.json",
   intro: {
     title: "Start Here",
     subtitle: "Welcome to The Income Switch",

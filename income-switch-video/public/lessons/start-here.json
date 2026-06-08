@@ -1,0 +1,20 @@
+{
+  "videoFile": "start-here.mp4",
+  "captionsFile": "start-here.captions.json",
+  "calloutsFile": "start-here.callouts.json",
+  "intro": {
+    "title": "Start Here",
+    "subtitle": "Welcome to The Income Switch",
+    "brandLabel": "THE INCOME SWITCH"
+  },
+  "lowerThird": {
+    "name": "Ada Pinales",
+    "role": "The Income Switch"
+  },
+  "outro": {
+    "title": "You're in.",
+    "cta": "Next up: Name What's Running The Show",
+    "brandLabel": "THE INCOME SWITCH"
+  },
+  "outroSeconds": 4
+}
