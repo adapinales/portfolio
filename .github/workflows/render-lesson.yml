@@ -1,24 +1,28 @@
 name: Render Lesson
 
-# Renders an Income Switch lesson in the cloud (GitHub's servers have a
-# compatible OS + open network), so it works regardless of your Mac.
+# Renders an Income Switch lesson in the cloud. Each lesson has a config at
+# income-switch-video/public/lessons/<slug>.json describing its video file,
+# captions/callouts files, and intro/outro text.
 #
 # How to use:
 #   1. In Google Drive, set the lesson video to "Anyone with the link".
 #   2. Actions tab -> "Render Lesson" -> "Run workflow".
-#   3. Paste the Drive link (or leave the default for Start Here) -> Run.
-#   4. When it finishes (green check), open the run and download the
-#      "finished-video" artifact at the bottom.
+#   3. Pick the lesson slug + paste the Drive link -> Run.
+#   4. Download the "finished-video" artifact from the run Summary.
 
 on:
   workflow_dispatch:
     inputs:
+      lesson:
+        description: "Lesson slug (matches public/lessons/<slug>.json)"
+        required: true
+        default: "start-here"
       drive_url:
         description: "Google Drive link to the lesson video (must be shareable)"
         required: true
         default: "https://drive.google.com/file/d/1WGR3HJSSEVoPdzR0Rr0CsuAteMoY_r5L/view"
       whisper_model:
-        description: "Caption accuracy model (small.en is a good balance; medium.en is more accurate but slower)"
+        description: "Caption accuracy model (small.en is a good balance)"
         required: true
         default: "small.en"
 
@@ -30,53 +34,51 @@ jobs:
       run:
         working-directory: income-switch-video
     steps:
-      - name: Check out the project
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - run: npm ci
 
-      - name: Install project dependencies
-        run: npm ci
+      - name: Resolve lesson config
+        run: |
+          CFG="public/lessons/${{ github.event.inputs.lesson }}.json"
+          test -f "$CFG" || { echo "No config at $CFG"; exit 1; }
+          echo "CFG=$CFG" >> "$GITHUB_ENV"
+          echo "VIDEO=$(node -p "require('./$CFG').videoFile")" >> "$GITHUB_ENV"
+          echo "CAPTIONS=$(node -p "require('./$CFG').captionsFile")" >> "$GITHUB_ENV"
 
       - name: Download the lesson video from Google Drive
         run: |
           pipx install gdown
           URL="${{ github.event.inputs.drive_url }}"
-          # Pull the long file-id token out of whatever Drive URL format was given.
           FILE_ID=$(echo "$URL" | grep -oE '[-_A-Za-z0-9]{25,}' | head -n1)
-          echo "Downloading Drive file id: $FILE_ID"
-          gdown "https://drive.google.com/uc?id=${FILE_ID}" -O public/lesson.mp4
-          ls -lh public/lesson.mp4
+          echo "Downloading Drive file id: $FILE_ID -> public/$VIDEO"
+          gdown "https://drive.google.com/uc?id=${FILE_ID}" -O "public/$VIDEO"
+          ls -lh "public/$VIDEO"
 
       - name: Normalize footage to constant frame rate
-        # Re-encode to a steady 30fps so the rendered video never freezes
-        # (variable-frame-rate recordings cause the picture to stutter while
-        # audio stays fine).
         run: |
           FFMPEG=$(node -e "process.stdout.write(require('ffmpeg-static'))")
-          "$FFMPEG" -y -i public/lesson.mp4 \
+          "$FFMPEG" -y -i "public/$VIDEO" \
             -r 30 -fps_mode cfr \
             -c:v libx264 -preset veryfast -crf 18 -pix_fmt yuv420p \
             -c:a aac -b:a 192k \
-            public/lesson_cfr.mp4
-          mv public/lesson_cfr.mp4 public/lesson.mp4
-          ls -lh public/lesson.mp4
+            "public/_cfr.mp4"
+          mv "public/_cfr.mp4" "public/$VIDEO"
 
       - name: Generate captions (Whisper)
         env:
           WHISPER_MODEL: ${{ github.event.inputs.whisper_model }}
-        run: npm run transcribe
+        run: node scripts/transcribe.mjs "public/$VIDEO" "public/$CAPTIONS"
 
       - name: Render the finished video
-        run: npm run render
+        run: npx remotion render Lesson "out/${{ github.event.inputs.lesson }}.mp4" --props="$CFG"
 
       - name: Upload the finished video
         uses: actions/upload-artifact@v4
         with:
           name: finished-video
-          path: income-switch-video/out/start-here.mp4
+          path: income-switch-video/out/${{ github.event.inputs.lesson }}.mp4
           if-no-files-found: error
           retention-days: 90
