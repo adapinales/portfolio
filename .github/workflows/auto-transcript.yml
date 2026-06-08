@@ -1,0 +1,56 @@
+name: Auto Transcript
+
+# Git-driven: editing income-switch-video/requests/transcript.json and pushing
+# runs a transcribe-only pass, then commits the readable transcript back to the
+# branch (and prints it to the log as a fallback).
+
+on:
+  push:
+    branches: ["claude/income-switch-video-edit-Yxa1A"]
+    paths: ["income-switch-video/requests/transcript.json"]
+
+permissions:
+  contents: write
+
+jobs:
+  transcript:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Resolve request + lesson config
+        working-directory: income-switch-video
+        run: node scripts/ci-env.mjs requests/transcript.json
+
+      - name: Install dependencies
+        working-directory: income-switch-video
+        run: npm ci
+
+      - name: Download the lesson video from Google Drive
+        working-directory: income-switch-video
+        run: |
+          pipx install gdown
+          FILE_ID=$(echo "$DRIVE" | grep -oE '[-_A-Za-z0-9]{25,}' | head -n1)
+          gdown "https://drive.google.com/uc?id=${FILE_ID}" -O "public/$VIDEO"
+
+      - name: Generate captions (Whisper)
+        working-directory: income-switch-video
+        env:
+          WHISPER_MODEL: small.en
+        run: node scripts/transcribe.mjs "public/$VIDEO" "public/$CAPTIONS"
+
+      - name: Build readable transcript
+        working-directory: income-switch-video
+        run: node scripts/print-transcript.mjs "public/$CAPTIONS" "transcripts/$LESSON.txt"
+
+      - name: Commit transcript back to the branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "income-switch-video/transcripts/$LESSON.txt"
+          git commit -m "Add $LESSON transcript [skip ci]" || { echo "No transcript changes"; exit 0; }
+          git push origin "HEAD:claude/income-switch-video-edit-Yxa1A"

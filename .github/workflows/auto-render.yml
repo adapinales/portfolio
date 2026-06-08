@@ -1,0 +1,60 @@
+name: Auto Render
+
+# Git-driven: editing income-switch-video/requests/render.json and pushing
+# renders that lesson and uploads the finished MP4 as the "finished-video"
+# artifact (download it from the run Summary).
+
+on:
+  push:
+    branches: ["claude/income-switch-video-edit-Yxa1A"]
+    paths: ["income-switch-video/requests/render.json"]
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: income-switch-video
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+
+      - name: Resolve request + lesson config
+        run: node scripts/ci-env.mjs requests/render.json
+
+      - name: Download the lesson video from Google Drive
+        run: |
+          pipx install gdown
+          FILE_ID=$(echo "$DRIVE" | grep -oE '[-_A-Za-z0-9]{25,}' | head -n1)
+          gdown "https://drive.google.com/uc?id=${FILE_ID}" -O "public/$VIDEO"
+          ls -lh "public/$VIDEO"
+
+      - name: Normalize footage to constant frame rate
+        run: |
+          FFMPEG=$(node -e "process.stdout.write(require('ffmpeg-static'))")
+          "$FFMPEG" -y -i "public/$VIDEO" \
+            -r 30 -fps_mode cfr \
+            -c:v libx264 -preset veryfast -crf 18 -pix_fmt yuv420p \
+            -c:a aac -b:a 192k \
+            "public/_cfr.mp4"
+          mv "public/_cfr.mp4" "public/$VIDEO"
+
+      - name: Generate captions (Whisper)
+        env:
+          WHISPER_MODEL: small.en
+        run: node scripts/transcribe.mjs "public/$VIDEO" "public/$CAPTIONS"
+
+      - name: Render the finished video
+        run: npx remotion render Lesson "out/$LESSON.mp4" --props="$CFG"
+
+      - name: Upload the finished video
+        uses: actions/upload-artifact@v4
+        with:
+          name: finished-video
+          path: income-switch-video/out/*.mp4
+          if-no-files-found: error
+          retention-days: 90
